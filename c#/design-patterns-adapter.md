@@ -1,0 +1,82 @@
+---
+title: Design Patterns: Adapter
+tags: [adapter-pattern, c#, design-patterns]
+---
+
+<a href="https://brunolm.files.wordpress.com/2015/07/2015-43-09-10-43-09-063.png"><img class=" size-full wp-image-459 alignleft" src="https://brunolm.files.wordpress.com/2015/07/2015-43-09-10-43-09-063.png" alt="2015-43-09 10-43-09-063" width="237" height="157" /></a> The adapter is used when you want to integrate a class from another source into your code.
+
+It could also be used to enable the use of legacy classes into your new architecture. It can also be used with classes that needs very specific methods to complete some work, like database access classes, and then they could be adapted to use a common interface.
+<!--more-->
+
+Imagine the following situation: you have a game where all your characters inherit from the abstract class Character.
+
+[code language="csharp"]
+public abstract class Character
+{
+    public int Health { get; set; }
+
+    public int Mana { get; set; }
+
+    public abstract string Attack();
+}
+
+public class Link : Character
+{
+    public override string Attack()
+    {
+        return "Link Attack";
+    }
+}
+
+public class Zelda : Character
+{
+    public override string Attack()
+    {
+        return "Zelda Attack";
+    }
+}
+[/code]
+
+You then need to include a character from another game into your game, but you can't change the original class. So you can create an adapter for it:
+
+[code language="csharp"]
+public class Mario
+{
+    public string JumpAttack()
+    {
+        return "Mario Attack";
+    }
+}
+
+public class MarioAdapter : Character
+{
+    private Mario mario = new Mario();
+
+    public override string Attack()
+    {
+        return mario.JumpAttack();
+    }
+}
+[/code]
+
+This way you can use the new character as if it were just another normal character in your game.
+
+[code language="csharp"]
+Character link = new Link();
+Character zelda = new Zelda();
+Character mario = new MarioAdapter();
+
+Console.WriteLine(link.Attack());
+Console.WriteLine(zelda.Attack());
+Console.WriteLine(mario.Attack());
+[/code]
+
+Outputs:
+
+[code]
+Link Attack
+Zelda Attack
+Mario Attack
+[/code]
+
+This way it is possible to adapt different classes to use the same interface or abstract class, so your application doesn't need specific handling for different types.
