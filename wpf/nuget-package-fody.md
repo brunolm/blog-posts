@@ -1,5 +1,5 @@
 ---
-title: Nuget Package: Fody
+title: "Nuget Package: Fody"
 tags: [c#, fody, il-injection, nuget-package, weaver]
 ---
 

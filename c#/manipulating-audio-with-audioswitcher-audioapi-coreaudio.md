@@ -1,5 +1,5 @@
 ---
-title: Manipulating audio with AudioSwitcher.AudioApi.CoreAudio
+title: "Manipulating audio with AudioSwitcher.AudioApi.CoreAudio"
 tags: [audioswitcher-audioapi, c#, core-audio-api]
 ---
 

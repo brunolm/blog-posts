@@ -1,5 +1,5 @@
 ---
-title: Application built on Twitch stream using WPF and C# to copy data to clipboard
+title: "Application built on Twitch stream using WPF and C# to copy data to clipboard"
 tags: [c#, mvvm, wpf]
 ---
 

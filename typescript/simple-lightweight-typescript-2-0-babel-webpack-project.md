@@ -1,5 +1,5 @@
 ---
-title: Simple lightweight TypeScript 2.0 Babel Webpack project
+title: "Simple lightweight TypeScript 2.0 Babel Webpack project"
 tags: [babel, typescript, typescript2.0, webpack]
 ---
 

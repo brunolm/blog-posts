@@ -1,5 +1,5 @@
 ---
-title: How it works: Angular Components
+title: "How it works: Angular Components"
 tags: [angular, angular-4, components, how-it-works-angular]
 ---
 

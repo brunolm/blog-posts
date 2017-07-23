@@ -1,5 +1,5 @@
 ---
-title: Deserializing interface properties with Json.NET
+title: "Deserializing interface properties with Json.NET"
 tags: [c#, json, json.net]
 ---
 

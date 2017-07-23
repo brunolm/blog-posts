@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Adapter
+title: "Design Patterns: Adapter"
 tags: [adapter-pattern, c#, design-patterns]
 ---
 

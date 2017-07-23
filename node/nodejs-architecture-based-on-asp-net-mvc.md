@@ -1,5 +1,5 @@
 ---
-title: NodeJS architecture based on ASP.NET MVC
+title: "NodeJS architecture based on ASP.NET MVC"
 tags: [asp.net-mvc, node.js, typescript]
 ---
 

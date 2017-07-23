@@ -1,5 +1,5 @@
 ---
-title: Nuget Package: Json.NET
+title: "Nuget Package: Json.NET"
 tags: [asp.net-mvc, c#, json.net, nuget-package]
 ---
 

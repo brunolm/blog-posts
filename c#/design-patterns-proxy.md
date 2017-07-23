@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Proxy
+title: "Design Patterns: Proxy"
 tags: [c#, design-patterns, proxy-pattern]
 ---
 

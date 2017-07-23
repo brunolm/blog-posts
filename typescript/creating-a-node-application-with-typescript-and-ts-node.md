@@ -1,5 +1,5 @@
 ---
-title: Creating a node application with TypeScript and ts-node
+title: "Creating a node application with TypeScript and ts-node"
 tags: [ts-node, typescript]
 ---
 

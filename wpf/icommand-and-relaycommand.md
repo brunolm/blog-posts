@@ -1,5 +1,5 @@
 ---
-title: ICommand and RelayCommand
+title: "ICommand and RelayCommand"
 tags: [c#, icommand, relaycommand, wpf]
 ---
 

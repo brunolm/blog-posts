@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Visitor
+title: "Design Patterns: Visitor"
 tags: [c#, design-patterns, visitor-pattern]
 ---
 

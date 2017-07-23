@@ -1,5 +1,5 @@
 ---
-title: View validation with Data Annotations and custom client validations in MVC
+title: "View validation with Data Annotations and custom client validations in MVC"
 tags: [asp.net-mvc, c#, data-annotations, validation]
 ---
 

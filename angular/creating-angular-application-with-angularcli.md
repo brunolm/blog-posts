@@ -1,5 +1,5 @@
 ---
-title: Creating an Angular application with @angular/cli
+title: "Creating an Angular application with @angular/cli"
 tags: [angular, angular-4, typescript]
 ---
 

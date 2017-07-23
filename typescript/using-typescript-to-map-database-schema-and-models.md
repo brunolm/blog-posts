@@ -1,5 +1,5 @@
 ---
-title: Using TypeScript to map database schema and models
+title: "Using TypeScript to map database schema and models"
 tags: [typescript]
 ---
 

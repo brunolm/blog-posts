@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Mediator
+title: "Design Patterns: Mediator"
 tags: [c#, design-patterns, mediator-pattern]
 ---
 

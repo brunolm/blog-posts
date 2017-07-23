@@ -1,5 +1,5 @@
 ---
-title: The power of Linq
+title: "The power of Linq"
 tags: [.net, c#, collection, linq]
 ---
 

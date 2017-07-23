@@ -1,5 +1,5 @@
 ---
-title: Screen validation with Data Annotations in WPF
+title: "Screen validation with Data Annotations in WPF"
 tags: [c#, data-annotations, validation, wpf]
 ---
 

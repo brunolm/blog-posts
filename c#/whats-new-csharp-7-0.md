@@ -1,5 +1,5 @@
 ---
-title: What's new in C# 7.0
+title: "What's new in C# 7.0"
 tags: [.net, .net-core, c#, c#-7.0, roslyn]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Setting up Entity Framework with Code First and Code Migrations
+title: "Setting up Entity Framework with Code First and Code Migrations"
 tags: [c#, code-migrations, entity-framework]
 ---
 

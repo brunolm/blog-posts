@@ -1,5 +1,5 @@
 ---
-title: Linq: Deferred Execution
+title: "Linq: Deferred Execution"
 tags: [c#, collection, linq]
 ---
 

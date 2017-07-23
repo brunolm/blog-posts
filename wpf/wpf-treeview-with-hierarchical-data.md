@@ -1,5 +1,5 @@
 ---
-title: WPF TreeView with hierarchical data
+title: "WPF TreeView with hierarchical data"
 tags: [c#, treeview, wpf]
 ---
 

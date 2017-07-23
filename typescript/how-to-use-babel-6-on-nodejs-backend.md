@@ -1,5 +1,5 @@
 ---
-title: How to use Babel 6 on NodeJS backend
+title: "How to use Babel 6 on NodeJS backend"
 tags: [babel, node.js]
 ---
 

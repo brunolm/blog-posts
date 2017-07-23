@@ -1,5 +1,5 @@
 ---
-title: Using MEF to setup Dependency Injection
+title: "Using MEF to setup Dependency Injection"
 tags: [.net, c#, dependency-injection, ioc, mef]
 ---
 

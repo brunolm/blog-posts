@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Interpreter
+title: "Design Patterns: Interpreter"
 tags: [c#, design-patterns, interpreter-pattern]
 ---
 

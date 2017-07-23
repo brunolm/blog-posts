@@ -1,5 +1,5 @@
 ---
-title: Webpack DllPlugin and DllReferencePlugin
+title: "Webpack DllPlugin and DllReferencePlugin"
 tags: [optimization, webpack, webpack-dll]
 ---
 

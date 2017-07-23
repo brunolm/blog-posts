@@ -1,5 +1,5 @@
 ---
-title: The new ASP.NET Core 1.0
+title: "The new ASP.NET Core 1.0"
 tags: [.net-core, asp.net, c#]
 ---
 

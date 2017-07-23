@@ -1,5 +1,5 @@
 ---
-title: knex: a Library to Access Databases
+title: "knex: a Library to Access Databases"
 tags: [database, javascript, knex]
 ---
 

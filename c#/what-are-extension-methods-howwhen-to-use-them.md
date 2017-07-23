@@ -1,5 +1,5 @@
 ---
-title: What are extension methods? How/When to use them?
+title: "What are extension methods? How/When to use them?"
 tags: [.net, c#, extension-methods]
 ---
 

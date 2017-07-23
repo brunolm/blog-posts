@@ -1,5 +1,5 @@
 ---
-title: Closing a window in MVVM pattern
+title: "Closing a window in MVVM pattern"
 tags: [c#, icommand, mvvm, wpf]
 ---
 

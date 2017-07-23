@@ -1,5 +1,5 @@
 ---
-title: Installing and using Secret Manager on ASP.NET Core
+title: "Installing and using Secret Manager on ASP.NET Core"
 tags: [application-secret, asp.net-core, c#]
 ---
 

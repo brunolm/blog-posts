@@ -1,5 +1,5 @@
 ---
-title: See what's new in C# 6 and Visual Studio 2015
+title: "See what's new in C# 6 and Visual Studio 2015"
 tags: [.net-4.6, c#, c#-6.0, visual-studio-2015]
 ---
 

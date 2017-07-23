@@ -1,5 +1,5 @@
 ---
-title: Getting QueryString values in Javascript
+title: "Getting QueryString values in Javascript"
 tags: [javascript, querystring]
 ---
 

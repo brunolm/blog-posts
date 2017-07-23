@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Bridge
+title: "Design Patterns: Bridge"
 tags: [bridge-pattern, c#, design-patterns]
 ---
 

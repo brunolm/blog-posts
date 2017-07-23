@@ -1,5 +1,5 @@
 ---
-title: Automating keyboard keypress and mouse clicks with AutoIt3
+title: "Automating keyboard keypress and mouse clicks with AutoIt3"
 tags: [autoit3, automation, c#, keyboard]
 ---
 

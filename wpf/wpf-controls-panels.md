@@ -1,5 +1,5 @@
 ---
-title: WPF Controls: Panels
+title: "WPF Controls: Panels"
 tags: [c#, controls, panel-controls, wpf]
 ---
 

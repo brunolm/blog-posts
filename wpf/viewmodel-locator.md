@@ -1,5 +1,5 @@
 ---
-title: ViewModel Locator
+title: "ViewModel Locator"
 tags: [c#, locator, viewmodel, wpf]
 ---
 

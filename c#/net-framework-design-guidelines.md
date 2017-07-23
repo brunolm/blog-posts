@@ -1,5 +1,5 @@
 ---
-title: General naming rules from .NET Framework Design Guidelines
+title: "General naming rules from .NET Framework Design Guidelines"
 tags: [.net, guidelines, naming]
 ---
 

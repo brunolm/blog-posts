@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Observer
+title: "Design Patterns: Observer"
 tags: [c#, design-patterns, observer-pattern]
 ---
 

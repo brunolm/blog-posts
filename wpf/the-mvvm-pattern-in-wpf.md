@@ -1,5 +1,5 @@
 ---
-title: The MVVM pattern in WPF
+title: "The MVVM pattern in WPF"
 tags: [c#, mvvm, wpf]
 ---
 

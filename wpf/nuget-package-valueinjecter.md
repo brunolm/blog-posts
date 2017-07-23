@@ -1,5 +1,5 @@
 ---
-title: Nuget Package: ValueInjecter
+title: "Nuget Package: ValueInjecter"
 tags: [asp.net-mvc, c#, nuget-package, valueinjecter, wpf]
 ---
 

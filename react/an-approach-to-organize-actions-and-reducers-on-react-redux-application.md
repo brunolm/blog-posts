@@ -1,5 +1,5 @@
 ---
-title: An approach to organize actions and reducers on react-redux application
+title: "An approach to organize actions and reducers on react-redux application"
 tags: [react, redux, software-architecture, typescript]
 ---
 

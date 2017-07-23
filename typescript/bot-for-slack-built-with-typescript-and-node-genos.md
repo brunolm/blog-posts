@@ -1,5 +1,5 @@
 ---
-title: Bot for Slack built with TypeScript and node - @genos
+title: "Bot for Slack built with TypeScript and node - @genos"
 tags: [genos, slack, typescript]
 ---
 

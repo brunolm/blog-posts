@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Iterator
+title: "Design Patterns: Iterator"
 tags: [c#, design-patterns, iterator-pattern]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Using async/await in TypeScript / JavaScript
+title: "Using async/await in TypeScript / JavaScript"
 tags: [async/await, javascript, typescript]
 ---
 

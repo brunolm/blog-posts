@@ -1,5 +1,5 @@
 ---
-title: Simple lightweight TypeScript 2.0 React Redux Babel Webpack project
+title: "Simple lightweight TypeScript 2.0 React Redux Babel Webpack project"
 tags: [babel, flux, react, redux, typescript, webpack]
 ---
 

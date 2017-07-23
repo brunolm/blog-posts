@@ -1,5 +1,5 @@
 ---
-title: How to Write a Good Git Commit Message
+title: "How to Write a Good Git Commit Message"
 tags: [git]
 ---
 

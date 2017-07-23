@@ -1,5 +1,5 @@
 ---
-title: An overview of Extension Methods and a handful set of them
+title: "An overview of Extension Methods and a handful set of them"
 tags: [c#, extension-methods]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Messaging - EventAggregator
+title: "Messaging - EventAggregator"
 tags: [c#, messaging, mvvm, wpf]
 ---
 

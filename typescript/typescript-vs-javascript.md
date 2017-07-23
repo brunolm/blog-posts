@@ -1,5 +1,5 @@
 ---
-title: TypeScript vs JavaScript
+title: "TypeScript vs JavaScript"
 tags: [javascript, typescript]
 ---
 

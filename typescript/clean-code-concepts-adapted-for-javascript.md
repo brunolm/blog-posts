@@ -1,5 +1,5 @@
 ---
-title: Clean Code concepts adapted for JavaScript
+title: "Clean Code concepts adapted for JavaScript"
 tags: [clean-code, javascript]
 ---
 

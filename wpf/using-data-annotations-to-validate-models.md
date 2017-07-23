@@ -1,5 +1,5 @@
 ---
-title: Using Data Annotations to validate models
+title: "Using Data Annotations to validate models"
 tags: [.net, c#, data-annotations, validation]
 ---
 

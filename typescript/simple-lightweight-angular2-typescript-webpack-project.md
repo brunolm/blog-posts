@@ -1,5 +1,5 @@
 ---
-title: Simple lightweight Angular2 TypeScript Webpack project
+title: "Simple lightweight Angular2 TypeScript Webpack project"
 tags: [angular2, babel, typescript, webpack]
 ---
 

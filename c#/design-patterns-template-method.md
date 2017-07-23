@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Template Method
+title: "Design Patterns: Template Method"
 tags: [c#, design-patterns, template-pattern]
 ---
 

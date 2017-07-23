@@ -1,5 +1,5 @@
 ---
-title: Linq implemented in TypeScript
+title: "Linq implemented in TypeScript"
 tags: [linq, typescript]
 ---
 

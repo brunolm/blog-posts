@@ -1,5 +1,5 @@
 ---
-title: Filtering elements in a collection
+title: "Filtering elements in a collection"
 tags: [c#, filter, wpf]
 ---
 

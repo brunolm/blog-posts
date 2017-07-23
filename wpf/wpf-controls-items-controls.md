@@ -1,5 +1,5 @@
 ---
-title: WPF Controls: Items controls
+title: "WPF Controls: Items controls"
 tags: [c#, controls, itemscontrols, wpf]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Abstract Factory
+title: "Design Patterns: Abstract Factory"
 tags: [abstract-factory-pattern, c#, design-patterns]
 ---
 

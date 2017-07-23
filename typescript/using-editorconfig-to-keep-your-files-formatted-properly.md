@@ -1,5 +1,5 @@
 ---
-title: Using editorconfig to keep your files formatted properly
+title: "Using editorconfig to keep your files formatted properly"
 tags: [editor, editorconfig]
 ---
 

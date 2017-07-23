@@ -1,5 +1,5 @@
 ---
-title: Reduced Test Cases
+title: "Reduced Test Cases"
 tags: [—No tags]
 ---
 

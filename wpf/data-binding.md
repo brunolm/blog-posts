@@ -1,5 +1,5 @@
 ---
-title: Data Binding
+title: "Data Binding"
 tags: [c#, data-binding, wpf]
 ---
 

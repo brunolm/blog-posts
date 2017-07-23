@@ -1,5 +1,5 @@
 ---
-title: Migrating to React Router 4 with Redux
+title: "Migrating to React Router 4 with Redux"
 tags: [react, react-redux, react-router, react-router-redux]
 ---
 

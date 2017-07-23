@@ -1,5 +1,5 @@
 ---
-title: WPF Controls: Styles &amp; Templates
+title: "WPF Controls: Styles &amp; Templates"
 tags: [c#, controls, style, template]
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Workflowy: A tool for everything, just like Trello
+title: "Workflowy: A tool for everything, just like Trello"
 tags: [workflowy]
 ---
 

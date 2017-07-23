@@ -1,5 +1,5 @@
 ---
-title: How it works: Angular Pipes
+title: "How it works: Angular Pipes"
 tags: [angular, angular-4, how-it-works-angular, pipes]
 ---
 

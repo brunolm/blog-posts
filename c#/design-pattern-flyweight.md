@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Flyweight
+title: "Design Patterns: Flyweight"
 tags: [c#, design-patterns, flyweight-pattern]
 ---
 

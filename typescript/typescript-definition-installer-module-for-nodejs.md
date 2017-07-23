@@ -1,5 +1,5 @@
 ---
-title: TypeScript definition installer module for NodeJS
+title: "TypeScript definition installer module for NodeJS"
 tags: [node.js, typescript]
 ---
 

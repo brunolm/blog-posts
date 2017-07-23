@@ -1,5 +1,5 @@
 ---
-title: Understanding ASP.NET MVC fundamentals
+title: "Understanding ASP.NET MVC fundamentals"
 tags: [asp.net-mvc, c#, razor]
 ---
 

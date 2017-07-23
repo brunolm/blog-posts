@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Memento
+title: "Design Patterns: Memento"
 tags: [c#, design-patterns, memento-pattern]
 ---
 

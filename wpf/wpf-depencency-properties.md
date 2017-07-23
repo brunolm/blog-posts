@@ -1,5 +1,5 @@
 ---
-title: WPF: Depencency Properties
+title: "WPF: Depencency Properties"
 tags: [c#, dependency-property, wpf]
 ---
 

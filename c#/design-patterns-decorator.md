@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Decorator
+title: "Design Patterns: Decorator"
 tags: [c#, decorator-pattern, design-patterns]
 ---
 

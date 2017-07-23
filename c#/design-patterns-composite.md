@@ -1,5 +1,5 @@
 ---
-title: Design Patterns: Composite
+title: "Design Patterns: Composite"
 tags: [c#, composite-pattern, design-patterns]
 ---
 

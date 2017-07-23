@@ -1,5 +1,5 @@
 ---
-title: How it works: Angular Modules
+title: "How it works: Angular Modules"
 tags: [angular, angular-4, how-it-works-angular, modules]
 ---
 
