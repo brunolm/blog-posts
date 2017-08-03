@@ -16,7 +16,7 @@ Implementing the Bridge Pattern it becomes:
 
 This simple example explains what it is and shows you why would you want it. But what about a more real world example? Well, we could for example rename the "Color" stuff to "DrawingApi".
 
-[code language="csharp"]
+```csharp
 namespace ConsoleApplication1
 {
     class Program
@@ -89,13 +89,13 @@ namespace ConsoleApplication1
         }
     }
 }
-[/code]
+```
 
 Output:
 
-[code]
+```
 Drawing hot!
 Drawing cool!
-[/code]
+```
 
 If you have a hierarchy like that you might want to consider applying this pattern.

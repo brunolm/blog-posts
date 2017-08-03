@@ -10,7 +10,7 @@ Through a common instance of a mediator the classes subscribing to it can commun
 
 <a href="https://brunolm.files.wordpress.com/2015/07/2015-39-09-12-39-15-719.png"><img src="https://brunolm.files.wordpress.com/2015/07/2015-39-09-12-39-15-719.png" alt="2015-39-09 12-39-15-719" width="526" height="345" class="alignnone size-full wp-image-455" /></a>
 
-[code language="csharp"]
+```csharp
 public abstract class Mediator
 {
     public IList<AirCraft> AirCrafts { get; private set; }
@@ -57,13 +57,13 @@ public class AirCraft : AirCraftCollegue
             , Name, message, sender.Name);
     }
 }
-[/code]
+```
 
 In the above example the mediator tells the subscribed aircrafts (except the sender) that one of them is saying something.
 
 Example usage:
 
-[code language="csharp"]
+```csharp
 class Program
 {
     static void Main(string[] args)
@@ -79,16 +79,16 @@ class Program
         towerMediator.Send(airCraft1, "Let's go up!");
     }
 }
-[/code]
+```
 
 Output:
 
-[code]
+```
 Unit #2: Received message 'Let's go up!' from 'Unit #1'
 Unit #3: Received message 'Let's go up!' from 'Unit #1'
 Unit #4: Received message 'Let's go up!' from 'Unit #1'
 Unit #5: Received message 'Let's go up!' from 'Unit #1'
-[/code]
+```
 
 
 One real world example is the <a href="https://brunolm.wordpress.com/2015/03/01/messaging-eventaggregator/" target="_blank">EventAggreagator that we see on WPF</a>. It allows the communication between view models that don't know about the existence of each other.

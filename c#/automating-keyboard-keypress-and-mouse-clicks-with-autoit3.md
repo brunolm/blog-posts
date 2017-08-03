@@ -16,11 +16,11 @@ I downloaded it, installed, created a project and added a reference to:
 
 And started coding as fast as I could. It is quite simple actually, you just have to call the <a href="https://www.autoitscript.com/autoit3/docs/functions/Send.htm" target="_blank">Send</a> command.
 
-[code language="csharp"]
+```csharp
 AutoItX3Lib.IAutoItX3 a = new AutoItX3Lib.AutoItX3();
 
 a.Send("{NUMPAD1}");
-[/code]
+```
 
 And <a href="https://www.youtube.com/watch?v=EwVDDxoKBk4" target="_blank">YEAH! BITCH! MAGIC! OHH!</a>
 
@@ -32,7 +32,7 @@ I highly recommend this software/DLL if you are interested in automating anythin
 
 And just for the record, the class I created to use SendInput, which is not so great, but anyway:
 
-[code language="csharp"]
+```csharp
 public class KeyboardManager
 {
     public const int INPUT_KEYBOARD = 1;
@@ -82,4 +82,4 @@ public class KeyboardManager
         ReleaseKey(vk);
     }
 }
-[/code]
+```

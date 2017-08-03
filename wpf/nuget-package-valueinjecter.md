@@ -14,9 +14,9 @@ ValueInjecter uses conventions to map properties. The default convention map pro
 
 <h2>WPF Example</h2>
 
-Given that I have a ViewModel called <code>EditGameViewModel</code> and a Model called <code>Game</code> as follows:
+Given that I have a ViewModel called `EditGameViewModel` and a Model called `Game` as follows:
 
-[code language="csharp"]
+```csharp
 public class EditGameViewModel : INotifyPropertyChanged
 {
     private string name;
@@ -57,11 +57,11 @@ public class Game
 
     public decimal Price { get; set; }
 }
-[/code]
+```
 
 I can inject values from the ViewModel to the Model:
 
-[code language="csharp"]
+```csharp
 public void ViewModel_to_Model_Example()
 {
     var editGameViewModel = new EditGameViewModel
@@ -75,12 +75,12 @@ public void ViewModel_to_Model_Example()
 
     game.InjectFrom(editGameViewModel);
 }
-[/code]
+```
 <a href="https://brunolm.files.wordpress.com/2015/03/beforeinjecter.png"><img src="https://brunolm.files.wordpress.com/2015/03/beforeinjecter.png" alt="beforeinjecter" width="522" height="639" class="alignnone size-full wp-image-152" /></a>
 
 And I can also inject from the Model to the ViewModel:
 
-[code language="csharp"]
+```csharp
 public void Model_to_ViewModel_Example()
 {
     var game = new Game
@@ -93,14 +93,14 @@ public void Model_to_ViewModel_Example()
 
     editGameViewModel.InjectFrom(game);
 }
-[/code]
+```
 <a href="https://brunolm.files.wordpress.com/2015/03/beforeinjecter1.png"><img src="https://brunolm.files.wordpress.com/2015/03/beforeinjecter1.png" alt="beforeinjecter" width="527" height="639" class="alignnone size-full wp-image-153" /></a>
 
 <h2>MVC example</h2>
 
 In MVC we can use ValueInjecter to easily get posted values and map to our model. By having the ViewModel on the client-side you can annotate your model properties with any required validations you need, even custom validations and you do not have to worry about transferring from the ViewModel to the Model because ValueInjecter does that for you.
 
-[code language="csharp"]
+```csharp
 [HttpPost]
 public async Task<ActionResult> Index(GameViewModel gameViewModel)
 {
@@ -110,11 +110,11 @@ public async Task<ActionResult> Index(GameViewModel gameViewModel)
     bool saved = await SaveGameAsync(game);
     return View(game);
 }
-[/code]
+```
 
 You can also retrieve an object from the database and transfer its values to a ViewModel and give it to the View, so the user can edit the values:
 
-[code language="csharp"]
+```csharp
 public ActionResult Index(int id)
 {
     var game = GameService.Get(id);
@@ -124,21 +124,21 @@ public ActionResult Index(int id)
 
     return View(gameViewModel);
 }
-[/code]
+```
 
 <h2>Conventions</h2>
 
 As I mentioned before, the default convention is by type and name. But this can be changed at will by calling the inject method passing the type of the convention as the generic type parameter.
 
-[code language="csharp"]
+```csharp
 game.InjectFrom<SomethingConvention>(editGameViewModel);
-[/code]
+```
 
-To implement a custom convention you have to inherit from <code>ConventionInjection</code> class.
+To implement a custom convention you have to inherit from `ConventionInjection` class.
 
 I am going to implement a convention that only copy properties when they have the same name and are of the string.
 
-[code language="csharp"]
+```csharp
 public class StringOnlyConvention : ConventionInjection
 {
     // abstract: you must implement
@@ -162,9 +162,9 @@ public class StringOnlyConvention : ConventionInjection
         return base.SetValue(c);
     }
 }
-[/code]
+```
 
-[code language="csharp"]
+```csharp
 public static void ViewModel_to_Model_Convention_Example()
 {
     var editGameViewModel = new EditGameViewModel
@@ -178,6 +178,6 @@ public static void ViewModel_to_Model_Convention_Example()
 
     game.InjectFrom<StringOnlyConvention>(editGameViewModel);
 }
-[/code]
+```
 
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-30-06-07-30-49-797.png"><img src="https://brunolm.files.wordpress.com/2015/03/2015-30-06-07-30-49-797.png" alt="2015-30-06 07-30-49-797" width="608" height="328" class="alignnone size-full wp-image-157" /></a>

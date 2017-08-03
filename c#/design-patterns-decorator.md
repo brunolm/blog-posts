@@ -10,7 +10,7 @@ It can be used, for example, to add logging capabilities to an instance. It work
 
 I could have class with methods that counts how many times it has been called:
 
-[code language="csharp"]
+```csharp
 public interface IDeveloper
 {
     int TotalClasses { get; set; }
@@ -37,11 +37,11 @@ public class Developer : IDeveloper
         TotalMethods++;
     }
 }
-[/code]
+```
 
 Then I could add an optinal behavior of loggin messages on the console.
 
-[code language="csharp"]
+```csharp
 public class DeveloperDecorator : IDeveloper
 {
     private IDeveloper developer;
@@ -89,20 +89,20 @@ public class DeveloperDecorator : IDeveloper
         developer.CreateMethod();
     }
 }
-[/code]
+```
 
 Without changing the main class.
 
-[code language="csharp"]
+```csharp
 var dev = new DeveloperDecorator(new Developer());
 
 dev.CreateClass();
 dev.CreateMethod();
-[/code]
+```
 
 If we are developing a game it could be used to handle item upgrades. In the following example there is a simple Sword. From this simple item we can upgrade it and add more damage to it.
 
-[code language="csharp"]
+```csharp
 public interface IWeapon
 {
     int Damage { get; }
@@ -118,11 +118,11 @@ public class Sword : IWeapon
         }
     }
 }
-[/code]
+```
 
 We now have a simple sword. To add the decorator pattern we need to create the upgrades. The decorator class will take the weapon and increment its values.
 
-[code language="csharp"]
+```csharp
 // Decorator
 public abstract class WeaponUpgrade : IWeapon
 {
@@ -160,11 +160,11 @@ public class SteelSwordDecorator : WeaponUpgrade
         }
     }
 }
-[/code]
+```
 
 To use this structure we just need to instantiate a decorator class and "put on top off" our previous class:
 
-[code language="csharp"]
+```csharp
 // sword.Damage = 10
 IWeapon sword = new Sword();
 
@@ -173,7 +173,7 @@ sword = new SteelSwordDecorator(sword);
 
 // sword.Damage = 210
 sword = new SteelSwordDecorator(sword);
-[/code]
+```
 
 We of course could have multiple different types of decorators (diamond sword, flame sword, and so on).
 

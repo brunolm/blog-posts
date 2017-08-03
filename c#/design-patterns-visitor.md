@@ -8,9 +8,9 @@ The visitor design pattern can be used when you need to perform an action on the
 In games we could use this pattern on attacks. In the game Breath of Fire IV, for example, there are many different types of attacks and different types of creatures. One might recover life instead of taking damage depending on the type of attack. The logic to determine what happens after an attack happen can be isolated on a visitor.
 <!--more-->
 
-To accomplish that we will need the visitor. The visitor declares a method that requires an object which it is going to visit. In this example I made one visitor that can access <code>Unit</code>s.
+To accomplish that we will need the visitor. The visitor declares a method that requires an object which it is going to visit. In this example I made one visitor that can access `Unit`s.
 
-[code language="csharp"]
+```csharp
 public interface IVisitor<T> where T: Unit
 {
     void Visit(T unit);
@@ -39,11 +39,11 @@ public class GigaFlare : IVisitor<Unit>
         }
     }
 }
-[/code]
+```
 
 And we also need the Unit. The unit has an method that accepts the visitor and allows the visitor to visit the instance accepting it.
 
-[code language="csharp"]
+```csharp
 
 
 public abstract class Unit
@@ -78,18 +78,18 @@ public class FireGoo : Goo
         AbsorbsFire = true;
     }
 }
-[/code]
+```
 
 In short what is happening is:
 
-[code]
+```
           visits      accepts            changes
 GigaFlare ------> Unit ------> GigaFlare -------> Unit
-[/code]
+```
 
 If we now put it to a test:
 
-[code language="csharp"]
+```csharp
 var goo = new Goo();
 var fgoo = new FireGoo();
 
@@ -97,14 +97,14 @@ var gigaFlare = new GigaFlare();
 
 goo.Accept(gigaFlare);
 fgoo.Accept(gigaFlare);
-[/code]
+```
 
 The result will be:
 
-[code]
+```
 50   // Goo had 50 def and took half the damage
 200  // FireGoo could absorb fire so it doubled its health
-[/code]
+```
 
 Another example, similar to this one, is on Starcraft where a siege tank does different amounts of damage to different units. The projectile visit units and handles damage appropriately. A Pattern Craft video from John Lindquist demonstrates it: http://youtu.be/KSEyIXnknoY
 

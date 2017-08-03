@@ -3,36 +3,36 @@ title: "Filtering elements in a collection"
 tags: [c#, filter, wpf]
 ---
 
-In WPF we have the <code>CollectionView</code> which is the instance type that are bound to Items controls. The CollectionView allows the use of filters, sorting and other features.
+In WPF we have the `CollectionView` which is the instance type that are bound to Items controls. The CollectionView allows the use of filters, sorting and other features.
 
-To filter the results shown in a items control we can take advantage of the collection view and add a <code>Filter</code> method to it.
+To filter the results shown in a items control we can take advantage of the collection view and add a `Filter` method to it.
 <!--more-->
 
 Consider the following scenario:
 
-[code language="csharp"]
+```csharp
 public ObservableCollection<Dragon> Items { get; set; }
 
 public ICollectionView ItemsView
 {
     get { return CollectionViewSource.GetDefaultView(Items); }
 }
-[/code]
+```
 
 
-[code language="xml"]
+```xml
 <DataGrid ItemsSource="{Binding ItemsView}" />
-[/code]
+```
 
-In the above code we are binding a collection view to the items control so we can add a filter to it. The next step is to create the filter. For that we have to assign a <code>Predicate&lt;object&gt;</code> (after having Items populated).
+In the above code we are binding a collection view to the items control so we can add a filter to it. The next step is to create the filter. For that we have to assign a `Predicate&lt;object&gt;` (after having Items populated).
 
-[code language="csharp"]
+```csharp
 ItemsView.Filter = new Predicate<object>(o => Filter(o as Dragon));
-[/code]
+```
 
 I've set it so when the view calls filter it is going to call my filter method passing each object in the collection. And then I filter the results I want with my custom logic.
 
-[code language="csharp"]
+```csharp
 private bool Filter(Dragon dragon)
 {
     return Search == null
@@ -40,16 +40,16 @@ private bool Filter(Dragon dragon)
         || dragon.OriginalName.IndexOf(Search, StringComparison.OrdinalIgnoreCase) != -1
         || dragon.RomajiName.IndexOf(Search, StringComparison.OrdinalIgnoreCase) != -1;
 }
-[/code]
+```
 
-In the method above I'm using <code>Search</code>, that is a property I will be binding to the screen to grab text from a textbox.
+In the method above I'm using `Search`, that is a property I will be binding to the screen to grab text from a textbox.
 
-[code language="xml"]
+```xml
 <TextBox Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" />
-[/code]
+```
 
 
-[code language="csharp"]
+```csharp
 private string search;
 
 public string Search
@@ -62,7 +62,7 @@ public string Search
         ItemsView.Refresh(); // required
     }
 }
-[/code]
+```
 
 When I set the Search property I'm telling the collection view to refresh. That causes the filter to be applied. If you don't call it then the list will remain the same.
 
@@ -74,7 +74,7 @@ Now if we change the text to be searched the data grid will automatically filter
 
 It is possible to have the collection view refresh automatically, to achieve that you need to inherit from a collection view and change the logic there. In the example bellow I'm saying that if my model implements INotifyPropertyChanged and a property named "Search" triggers a change then it will refresh itself.
 
-[code language="csharp"]
+```csharp
 public class NotifiableCollectionView : ListCollectionView
 {
     public NotifiableCollectionView(IList sourceCollection, object model)
@@ -90,11 +90,11 @@ public class NotifiableCollectionView : ListCollectionView
             this.Refresh();
     }
 }
-[/code]
+```
 
 Our ICollectionView will be a NotifiableCollectionView instead of the default.
 
-[code language="csharp"]
+```csharp
 private ICollectionView itemsView;
 
 public ICollectionView ItemsView
@@ -108,11 +108,11 @@ public ICollectionView ItemsView
         return itemsView;
     }
 }
-[/code]
+```
 
 So we can remove the refresh call:
 
-[code language="csharp"]
+```csharp
 private string search;
 
 public string Search
@@ -125,11 +125,11 @@ public string Search
         // ItemsView.Refresh(); // no longer required
     }
 }
-[/code]
+```
 
 And if we add <a href="https://brunolm.wordpress.com/2015/03/05/nuget-package-fody/" target="_blank">Fody</a> then we can simplify to:
 
-[code language="csharp"]
+```csharp
 public string Search { get; set; }
-[/code]
+```
 

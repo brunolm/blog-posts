@@ -3,9 +3,9 @@ title: "WPF Controls: Items controls"
 tags: [c#, controls, itemscontrols, wpf]
 ---
 
-The controls that inherit from <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.itemscontrol%28v=vs.110%29.aspx#inheritanceContinued" target="_blank"><code>ItemsControl</code></a> are controls that support a collection of objects.
+The controls that inherit from <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.itemscontrol%28v=vs.110%29.aspx#inheritanceContinued" target="_blank">`ItemsControl`</a> are controls that support a collection of objects.
 
-These controls can be used to display a collection of objects on the screen. For example, controls like <code>ListBox</code> and <code>ComboBox</code> can be used to allow the user to select an object from a collection.
+These controls can be used to display a collection of objects on the screen. For example, controls like `ListBox` and `ComboBox` can be used to allow the user to select an object from a collection.
 
 <a href="https://brunolm.files.wordpress.com/2015/03/listbox.png"><img src="https://brunolm.files.wordpress.com/2015/03/listbox.png" alt="listbox" width="226" height="160" class="alignnone size-full wp-image-264" /></a>
 
@@ -50,7 +50,7 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.pr
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.contextmenu(v=vs.110).aspx" target="_blank">ContextMenu control</a> is the menu that shows up when you right-click the element.
 
-[code language="xml"]
+```xml
 <Label Content="red">
     <Label.ContextMenu>
         <ContextMenu>
@@ -58,19 +58,19 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.co
         </ContextMenu>
     </Label.ContextMenu>
 </Label>
-[/code]
+```
 
 <h4>Menu</h4>
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.menu(v=vs.110).aspx" target="_blank">Menu control</a> allows you to nest MenuItems forming a menu that can run commands.
 
-[code language="xml"]
+```xml
 <Menu>
     <MenuItem Header="_File">
         <MenuItem Header="Quit" Command="{Binding QuitCommand}" />
     </MenuItem>
 </Menu>
-[/code]
+```
 
 <h3>Selector</h3>
 
@@ -89,39 +89,39 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.pr
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.combobox(v=vs.110).aspx" target="_blank">ComboBox control</a> allows you to select a single option from the collection.
 
-[code language="xml"]
+```xml
 <ComboBox>
     <ComboBoxItem Content="Development" />
     <ComboBoxItem Content="Test" />
 </ComboBox>
-[/code]
+```
 
-To bind an enum to a <code>ComboBox</code> you can use <a href="http://stackoverflow.com/a/4398752/340760" target="_blank">this approach posted on Stack Overflow</a>.
+To bind an enum to a `ComboBox` you can use <a href="http://stackoverflow.com/a/4398752/340760" target="_blank">this approach posted on Stack Overflow</a>.
 
 <h4>ListBox</h4>
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.listbox(v=vs.110).aspx" target="_blank">ListBox control</a> allows you to select one or more items from a collection.
 
-[code language="xml"]
+```xml
 <ListBox SelectionMode="Multiple">
     <ListBoxItem Content="Dev" />
     <ListBoxItem Content="Test" />
 </ListBox>
-[/code]
+```
 
 
 <h4>DataGrid</h4>
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.datagrid(v=vs.110).aspx" target="_blank">DataGrid control</a> can be used to show tabular data. By default it auto generate columns by reading the public properties of the object.
 
-[code language="xml"]
+```xml
 <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding Items}" />
-[/code]
+```
 
 <h4>TabControl</h4>
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.tabcontrol(v=vs.110).aspx" target="_blank">TabControl control</a> allows you to place controls in different tabs.
 
-[code language="xml"]
+```xml
 <TabControl>
     <TabItem Header="Home">
         Home Content
@@ -130,12 +130,12 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.ta
         Second Content
     </TabItem>
 </TabControl>
-[/code]
+```
 
 <h3>StatusBar</h3>
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.primitives.statusbar%28v=vs.110%29.aspx" target="_blank">StatusBar control</a> can contain a collection of controls that will be displayed.
 
-[code language="xml"]
+```xml
 <StatusBar>
     <StatusBarItem>
         <Label Content="Status..." />
@@ -144,13 +144,13 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.pr
         <Label Content="10/10/2020 10:10" />
     </StatusBarItem>
 </StatusBar>
-[/code]
+```
 
 <h3>TreeView</h3>
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.forms.treeview%28v=vs.110%29.aspx" target="_blank">TreeView control</a> allows to bind items with hierarchy.
 
-[code language="xml"]
+```xml
 <TreeView ItemsSource="{Binding Games}">
     <TreeView.ItemTemplate>
         <HierarchicalDataTemplate ItemsSource="{Binding Characters}">
@@ -158,6 +158,6 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.forms.treev
         </HierarchicalDataTemplate>
     </TreeView.ItemTemplate>
 </TreeView>
-[/code]
+```
 
 <a href="https://brunolm.files.wordpress.com/2015/03/treeview.png"><img src="https://brunolm.files.wordpress.com/2015/03/treeview.png" alt="treeview" width="140" height="96" class="alignnone size-full wp-image-277" /></a>

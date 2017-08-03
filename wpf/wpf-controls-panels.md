@@ -13,7 +13,7 @@ Each Panel has its own particular way of organizing controls.
 
 <h2>Panel Controls</h2>
 
-Panel controls are everything that derives from <code>System.Windows.Controls.Panel</code>. Their main purpose is to group a set of controls in a container.
+Panel controls are everything that derives from `System.Windows.Controls.Panel`. Their main purpose is to group a set of controls in a container.
 
 <ul>
     <li><small>System.Windows.Controls.</small><strong>Canvas</strong></li>
@@ -41,18 +41,18 @@ Note: This post doesn't cover <a href="https://msdn.microsoft.com/en-us/library/
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.canvas(v=vs.110).aspx" target="_blank">Canvas control</a> allows you to add controls to any position on the screen by informing the coordinates. This is the control you want when developing a game, because you can draw on it.
 
-[code language="xml"]
+```xml
 <Canvas>
     <TextBlock Text="Coord =" Canvas.Top="10" Canvas.Left="50" />
 </Canvas>
-[/code]
+```
 
 <h3>DockPanel</h3>
 
-The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.dockpanel(v=vs.110).aspx" target="_blank">DockPanel control</a> can define where elements will be docked within it. We can specify where the elements will be docked by setting <code>DockPanel.Dock</code> to the position where they should be docked.
+The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.dockpanel(v=vs.110).aspx" target="_blank">DockPanel control</a> can define where elements will be docked within it. We can specify where the elements will be docked by setting `DockPanel.Dock` to the position where they should be docked.
 If the element is inside the DockPanel and is not specifying a position it is going to use the remaining space.
 
-[code language="xml"]
+```xml
 <DockPanel>
     <Button Background="Green" DockPanel.Dock="Top" Height="25" />
     <Button Background="Blue" DockPanel.Dock="Left" Width="25" />
@@ -60,7 +60,7 @@ If the element is inside the DockPanel and is not specifying a position it is go
     <Button Background="Yellow" DockPanel.Dock="Bottom" Height="25" />
     <Button Background="Purple" />
 </DockPanel>
-[/code]
+```
 
 The above code will result in the image bellow. Notice that elements docked last have less space available to them than the elements docked first.
 
@@ -68,13 +68,13 @@ The above code will result in the image bellow. Notice that elements docked last
 
 <h3>Grid</h3>
 
-The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.grid(v=vs.110).aspx" target="_blank">Grid control</a> allows you to define rows and columns by creating <code>ColumnDefinitions</code> and <code>RowDefinitions</code>.
+The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.grid(v=vs.110).aspx" target="_blank">Grid control</a> allows you to define rows and columns by creating `ColumnDefinitions` and `RowDefinitions`.
 
-You can set their size to a number of pixels, <code>Auto</code> (which means resize itself to the contents occupied space), "*" or "N*" (* = give me what is left; 2* = give me two pieces of what is left; 5* = five pieces of what is left...).
+You can set their size to a number of pixels, `Auto` (which means resize itself to the contents occupied space), "*" or "N*" (* = give me what is left; 2* = give me two pieces of what is left; 5* = five pieces of what is left...).
 
-And then to place the controls in their respective rows and columns you add <code>Grid.Row="X"</code> and <code>Grid.Column="Y"</code> to the controls tag. You can also set <code>Grid.RowSpan</code> and <code>Grid.ColumnSpan</code> to occupy more rows/columns.
+And then to place the controls in their respective rows and columns you add `Grid.Row="X"` and `Grid.Column="Y"` to the controls tag. You can also set `Grid.RowSpan` and `Grid.ColumnSpan` to occupy more rows/columns.
 
-[code language="xml"]
+```xml
 <Grid>
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="25" />
@@ -105,7 +105,7 @@ And then to place the controls in their respective rows and columns you add <cod
             />
 
 </Grid>
-[/code]
+```
 
 Generates:
 
@@ -115,7 +115,7 @@ Generates:
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.primitives.tabpanel(v=vs.110).aspx" target="_blank">TabPanel control</a> is the control used internally by the TabControl to contain the set of tabs.
 
-[code language="xml"]
+```xml
 <TabControl>
     <TabItem Header="Home" IsSelected="True">
         <Label Content="Hi Home" />
@@ -127,20 +127,20 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.pr
         <Label Content="Hi Tab2" />
     </TabItem>
 </TabControl>
-[/code]
+```
 
 <a href="https://brunolm.files.wordpress.com/2015/03/tabpanel.png"><img src="https://brunolm.files.wordpress.com/2015/03/tabpanel.png" alt="tabpanel" width="421" height="98" class="alignnone size-full wp-image-229" /></a>
 
 You can use it to create a similar look using some controls. It is somewhat similar to a horizontal oriented StackPanel. For example:
 
-[code language="xml"]
+```xml
 <TabPanel>
     <Button Content="Button 1" />
     <Button Content="Button 2" />
     <Button Content="Button 3" />
     <Button Content="Button 4" />
 </TabPanel>
-[/code]
+```
 
 <h3>ToolBarOverflowPanel</h3>
 
@@ -150,7 +150,7 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.pr
 
 The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.primitives.uniformgrid(v=vs.110).aspx" target="_blank">UniformGrid control</a> renders equal sized columns and rows. You can specify the number of columns and rows it is going to generate and the controls declared inside will be placed in their respective row/column by the order they are declare. For example:
 
-[code language="xml"]
+```xml
 <UniformGrid Columns="2" Rows="3" Height="100"
     VerticalAlignment="Top">
     <Label Content="Name" VerticalAlignment="Center" />
@@ -162,7 +162,7 @@ The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.pr
     <Label Content="Actvie" VerticalAlignment="Center" />
     <TextBox VerticalAlignment="Center" />
 </UniformGrid>
-[/code]
+```
 
 Results in:
 
@@ -170,42 +170,42 @@ Results in:
 
 <h3>StackPanel</h3>
 
-The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.stackpanel(v=vs.110).aspx" target="_blank">StackPanel control</a> is the simplest and easiest control to use. It simply displays elements by the order they are declare, by default it has the <code>Orientation</code> set to <code>Vertical</code> which causes the controls to render one above the other:
+The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.stackpanel(v=vs.110).aspx" target="_blank">StackPanel control</a> is the simplest and easiest control to use. It simply displays elements by the order they are declare, by default it has the `Orientation` set to `Vertical` which causes the controls to render one above the other:
 
-[code language="xml"]
+```xml
 <StackPanel>
     <Button Content="Button" />
     <Button Content="Button" />
     <Button Content="Button" />
 </StackPanel
-[/code]
+```
 
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-11-10-11-11-46-891.png"><img src="https://brunolm.files.wordpress.com/2015/03/2015-11-10-11-11-46-891.png" alt="2015-11-10 11-11-46-891" width="422" height="122" class="alignnone size-full wp-image-234" /></a>
 
 You can manually set the Orientation to Horizontal, which will cause elements to be rendered that way:
 
-[code language="xml"]
+```xml
 <StackPanel Orientation="Horizontal">
     <Button Content="Button" />
     <Button Content="Button" />
     <Button Content="Button" />
 </StackPanel
-[/code]
+```
 
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-12-10-11-12-46-288.png"><img src="https://brunolm.files.wordpress.com/2015/03/2015-12-10-11-12-46-288.png" alt="2015-12-10 11-12-46-288" width="425" height="100" class="alignnone size-full wp-image-235" /></a>
 
 <h3>VirtualizingPanel</h3>
 
-The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.virtualizingpanel(v=vs.110).aspx" target="_blank">VirtualizingPanel control</a> is an abstract control. The types deriving from it can set <code>IsVirtualizing</code> to true indicating the control will only draw the controls in the screen that can be visible. The other elements aren't rendered unless you scroll them into view.
+The <a href="https://msdn.microsoft.com/en-us/library/system.windows.controls.virtualizingpanel(v=vs.110).aspx" target="_blank">VirtualizingPanel control</a> is an abstract control. The types deriving from it can set `IsVirtualizing` to true indicating the control will only draw the controls in the screen that can be visible. The other elements aren't rendered unless you scroll them into view.
 
 Example:
 
-[code language="xml"]
+```xml
 <ListBox VirtualizingStackPanel.IsVirtualizing="True">
     <ListBoxItem Content="Test" />
     ...
 </ListBox>
-[/code]
+```
 
 <h3>WrapPanel</h3>
 

@@ -19,7 +19,7 @@ One example of the proxy structure could be the following:
 
 I can have a proxy to access a store, if the store is closed it shouldn't even bother in loading unnecessary resources.
 
-[code language="csharp"]
+```csharp
 public interface IStore
 {
     void ListItems();
@@ -57,7 +57,7 @@ public class RealStore : IStore
         Console.WriteLine("Heavy graphics Weapon 5");
     }
 }
-[/code]
+```
 
 This example is something we can see in Assassins's Creed where this pattern might have been used. In early game there is a shop that has many unavailable options. Instead of loading all the resources required for the items it uses a proxy saying there is nothing available, so it saves lots of resources.
 

@@ -14,9 +14,9 @@ To do that, select the file which contains the tests on the solution explorer, c
 
 <a href="https://brunolm.files.wordpress.com/2015/10/testframework.png"><img src="https://brunolm.files.wordpress.com/2015/10/testframework.png" alt="testframework" width="446" height="212" class="alignnone size-full wp-image-500" /></a>
 
-Enter a test framework (<code>ExportRunner</code> for example). If you are using ExportRunner then your tests will look like:
+Enter a test framework (`ExportRunner` for example). If you are using ExportRunner then your tests will look like:
 
-[code language="javascript"]
+```
 export function Test1()
 {
     throw "fail";
@@ -26,7 +26,7 @@ export function Test2() { }
 export function Test3() { }
 export function Test4() { }
 export function Test5() { }
-[/code]
+```
 
 The test framework is automatically set if you create the file in Visual Studio selecting the right file type. You can also use other test frameworks, like Mocha.
 

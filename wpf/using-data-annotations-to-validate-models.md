@@ -3,11 +3,11 @@ title: "Using Data Annotations to validate models"
 tags: [.net, c#, data-annotations, validation]
 ---
 
-The .NET Framework provides us a set of attributes that we can use to validate objects. By using the namespace <code>System.ComponentModel.DataAnnotations</code> we can annotate our model's properties with validation attributes.<!--more-->
+The .NET Framework provides us a set of attributes that we can use to validate objects. By using the namespace `System.ComponentModel.DataAnnotations` we can annotate our model's properties with validation attributes.<!--more-->
 
 There are attributes to mark a property as required, set a maximum length and so on. For example:
 
-[code language="csharp"]
+```csharp
 public class Game
 {
     [Required]
@@ -17,21 +17,21 @@ public class Game
     [Range(0, 100)]
     public decimal Price { get; set; }
 }
-[/code]
+```
 
 To check if an instance is valid we can use the following code:
 
-[code language="csharp"]
+```csharp
 Validator.TryValidateObject(obj
     , new ValidationContext(obj)
     , results, true);
-[/code]
+```
 
-The return is <code>true</code> if the object does not have any errors or <code>false</code> if it does have errors. And the parameter <code>results</code> is populated with errors, if any. <a href="https://msdn.microsoft.com/en-us/library/dd411772%28v=vs.110%29.aspx" target="_blank">The full definition of this method can be found at MSDN documentation</a>.
+The return is `true` if the object does not have any errors or `false` if it does have errors. And the parameter `results` is populated with errors, if any. <a href="https://msdn.microsoft.com/en-us/library/dd411772%28v=vs.110%29.aspx" target="_blank">The full definition of this method can be found at MSDN documentation</a>.
 
 To test our Game class we can use the following code:
 
-[code language="csharp"]
+```csharp
 static void Main(string[] args)
 {
     ICollection<ValidationResult> results = null;
@@ -60,27 +60,27 @@ static bool Validate<T>(T obj, out ICollection<ValidationResult> results)
 
     return Validator.TryValidateObject(obj, new ValidationContext(obj), results, true);
 }
-[/code]
+```
 
 Running it results in:
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-11-04-12-11-43-490.png"><img class="alignnone size-full wp-image-79" src="https://brunolm.files.wordpress.com/2015/03/2015-11-04-12-11-43-490.png" alt="2015-11-04 12-11-43-490" width="489" height="43" /></a>
 
 If we then change the properties to valid values:
 
-[code language="csharp"]
+```csharp
 var validGame = new Game
 {
     Name = "Magicka",
     Price = 5,
 };
-[/code]
+```
 
 And test again:
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-14-04-12-14-55-202.png"><img class="alignnone size-full wp-image-80" src="https://brunolm.files.wordpress.com/2015/03/2015-14-04-12-14-55-202.png" alt="2015-14-04 12-14-55-202" width="161" height="27" /></a>
 
-It is also possible to create your own attributes. All you have to do is inherit from <code>ValidationAttribute</code>. In the following example the attribute is going to check if the value is divisible by 7. If not it will return an error message.
+It is also possible to create your own attributes. All you have to do is inherit from `ValidationAttribute`. In the following example the attribute is going to check if the value is divisible by 7. If not it will return an error message.
 
-[code language="csharp"]
+```csharp
 public class DivisibleBy7Attribute : ValidationAttribute
 {
     public DivisibleBy7Attribute()
@@ -101,14 +101,14 @@ public class DivisibleBy7Attribute : ValidationAttribute
             , new string[] { validationContext.MemberName });
     }
 }
-[/code]
+```
 
 And in the object to be validated:
 
-[code language="csharp"]
+```csharp
 [DivisibleBy7]
 public decimal Price { get; set; }
-[/code]
+```
 
 If the validation fails it is going to return the following error message:
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-31-04-12-31-04-005.png"><img class="alignnone size-full wp-image-81" src="https://brunolm.files.wordpress.com/2015/03/2015-31-04-12-31-04-005.png" alt="2015-31-04 12-31-04-005" width="277" height="25" /></a>

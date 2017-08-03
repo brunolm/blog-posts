@@ -10,23 +10,23 @@ In this post I am going to show how to apply these validations on the client-sid
 By default when you create a standard MVC project it creates all initial structure for you, including the setup of the scripts. To enable client-side validation you need two keys under appSettings in your web.config file (which are set by default in the standard template):
 <!--more-->
 
-[code language="csharp"]
+```csharp
 <add key="ClientValidationEnabled" value="true" />
 <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-[/code]
+```
 
 You will also need to include both jQuery and jQuery.validate on your pages. By default jQuery is included, but jQuery.validate is not included on _Layout.cshtml, make sure you include it. You also have to put the scripts in order.
 
-[code language="csharp"]
+```csharp
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
-[/code]
+```
 
 On the default MVC there are some bundles setup, the code above is making use of it. You could also manually include the scripts with the script tag.
 
 With the setup ready we can start coding. I will create a model with some data annotations:
 
-[code language="csharp"]
+```csharp
 public class Game
 {
     [Required]
@@ -40,11 +40,11 @@ public class Game
     [Range(13, 40)]
     public string Age { get; set; }
 }
-[/code]
+```
 
 And on my view I am going to create a form with it:
 
-[code language="csharp"]
+```csharp
 @using (Html.BeginForm())
 {
     <div>
@@ -75,15 +75,15 @@ And on my view I am going to create a form with it:
         <input type="submit" value="Submit" />
     </div>
 }
-[/code]
+```
 
 The result will be:
 
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-46-04-08-46-23-925.png"><img class="alignnone size-full wp-image-102" src="https://brunolm.files.wordpress.com/2015/03/2015-46-04-08-46-23-925.png" alt="2015-46-04 08-46-23-925" width="423" height="311" /></a>
 
-The object being validated receives the class <code>input-validation-error</code> which can be styled. And the error message receives <code>field-validation-error</code> which can also be styled. For example, if we want to display a red border and red message:
+The object being validated receives the class `input-validation-error` which can be styled. And the error message receives `field-validation-error` which can also be styled. For example, if we want to display a red border and red message:
 
-[code language="css"]
+```css
 .input-validation-error
 {
     border: 1px solid red;
@@ -92,13 +92,13 @@ The object being validated receives the class <code>input-validation-error</code
 {
     color: red;
 }
-[/code]
+```
 
 <h2>Custom Client Validation</h2>
 
-To make a custom validation and allow it to run on the client-side we have to create a new attribute that inherits from the <code>ValidationAttribute</code> and implements <code>IClientValidatable</code> interface. For example:
+To make a custom validation and allow it to run on the client-side we have to create a new attribute that inherits from the `ValidationAttribute` and implements `IClientValidatable` interface. For example:
 
-[code language="csharp"]
+```csharp
 public class NoSwearWords : ValidationAttribute, IClientValidatable
 {
     protected override ValidationResult IsValid(object value,
@@ -129,20 +129,20 @@ public class NoSwearWords : ValidationAttribute, IClientValidatable
         yield return rule;
     }
 }
-[/code]
+```
 
 I am telling it that on the client-side I have a jQuery validator method called "noswearwords" (lowercase name required).
 
-I will decorate the property <code>Comment</code> with it:
+I will decorate the property `Comment` with it:
 
-[code language="csharp"]
+```csharp
 [NoSwearWords]
 public string Comment { get; set; }
-[/code]
+```
 
 To implement this validation on the client side I have to create the method "noswearwords" and register it on the adapters:
 
-[code language="javascript"]
+```
 <script type="text/javascript">
 
     $.validator.addMethod("noswearwords",
@@ -157,7 +157,7 @@ To implement this validation on the client side I have to create the method "nos
         });
 
 </script>
-[/code]
+```
 
 Everything else is done automatically for you:
 

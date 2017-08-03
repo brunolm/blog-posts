@@ -7,12 +7,12 @@ In the post <a title="Using Data Annotations to validate models" href="https://b
 
 In this post I am going to show how to apply these validations on the client-side.
 
-Note: All your models must implement <code>INotifyPropertyChanged</code> and to make it simple and clean I will be using <a href="https://github.com/Fody/PropertyChanged" target="_blank">Fody PropertyChanged nuget packaged</a>.
+Note: All your models must implement `INotifyPropertyChanged` and to make it simple and clean I will be using <a href="https://github.com/Fody/PropertyChanged" target="_blank">Fody PropertyChanged nuget packaged</a>.
 <!--more-->
 
-In order to tell the screen it should validate the bound property we have to implement the <code>IDataErrorInfo</code> interface. For example:
+In order to tell the screen it should validate the bound property we have to implement the `IDataErrorInfo` interface. For example:
 
-[code language="csharp"]
+```csharp
 [PropertyChanged.ImplementPropertyChanged]
 public abstract class PropertyValidateModel : IDataErrorInfo
 {
@@ -39,11 +39,11 @@ public abstract class PropertyValidateModel : IDataErrorInfo
         }
     }
 }
-[/code]
+```
 
-This validation method is similar to the validation in the other post, however it validates a property instead of the whole model. With this class I can now inherit from it and my model will automatically be implementing <code>IDataErrorInfo</code>.
+This validation method is similar to the validation in the other post, however it validates a property instead of the whole model. With this class I can now inherit from it and my model will automatically be implementing `IDataErrorInfo`.
 
-[code language="csharp"]
+```csharp
 [PropertyChanged.ImplementPropertyChanged]
 public class Game : PropertyValidateModel
 {
@@ -59,30 +59,30 @@ public class Game : PropertyValidateModel
     [Range(13, 40)]
     public int MinAge { get; set; }
 }
-[/code]
+```
 
 On my view I have to bind the properties with some additional settings:
 
-[code language="csharp"]
+```csharp
 <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged
     , NotifyOnValidationError=True, ValidatesOnDataErrors=True}" />
-[/code]
+```
 
 <ul>
-	<li><code>UpdateSourceTrigger</code> is going to tell the view to notify changes as they happen.</li>
-	<li><code>NotifyOnValidationError</code> is going to notify when there are errors.</li>
-	<li><code>ValidatesOnDataErrors</code> is going to enable validation.</li>
+	<li>`UpdateSourceTrigger` is going to tell the view to notify changes as they happen.</li>
+	<li>`NotifyOnValidationError` is going to notify when there are errors.</li>
+	<li>`ValidatesOnDataErrors` is going to enable validation.</li>
 </ul>
 
 The outcome will be:
 
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-06-04-08-06-55-675.png"><img src="https://brunolm.files.wordpress.com/2015/03/2015-06-04-08-06-55-675.png" alt="2015-06-04 08-06-55-675" width="392" height="169" class="alignnone size-full wp-image-93" /></a>
 
-However by simply doing it this way we do not get any error messages displayed, so we do not know what is wrong with data. To display the errors we have to do a little trick with the <code>Validation.ErrorTemplate</code>.
+However by simply doing it this way we do not get any error messages displayed, so we do not know what is wrong with data. To display the errors we have to do a little trick with the `Validation.ErrorTemplate`.
 
-The code bellow binds, through a trigger, the <code>TextBox</code>'s <code>ToolTip</code> to the first error encountered in the control. And by setting the <code>TextBox</code>'s error template we can display the error message by accessing the <code>AdornedElement</code> and grabbing the <code>ToolTip</code> where the error message is contained. If you do not want to use the <code>ToolTip</code> you can use the <code>Tag</code> property instead.
+The code bellow binds, through a trigger, the `TextBox`'s `ToolTip` to the first error encountered in the control. And by setting the `TextBox`'s error template we can display the error message by accessing the `AdornedElement` and grabbing the `ToolTip` where the error message is contained. If you do not want to use the `ToolTip` you can use the `Tag` property instead.
 
-[code language="csharp"]
+```csharp
 <Style TargetType="TextBox">
     <Setter Property="Validation.ErrorTemplate">
         <Setter.Value>
@@ -110,7 +110,7 @@ The code bellow binds, through a trigger, the <code>TextBox</code>'s <code>ToolT
         </Trigger>
     </Style.Triggers>
 </Style>
-[/code]
+```
 
 Running the application again:
 

@@ -8,18 +8,18 @@ The abstract factory design pattern is a way for you to be able to get different
 
 For example, lets say we have a factory that create items to build a house. So we need material to build the floor, walls... But then imagine that those items could be made of different materials and have perhaps unique characteristics. To accomplish that with the abstract factory we can do like this:
 
-[code language="csharp"]
+```csharp
 public interface IItemFactory
 {
     IItem CreateWall();
 
     IItem CreateFloor();
 }
-[/code]
+```
 
 And we would have two factories:
 
-[code language="csharp"]
+```csharp
 
 public class MetalFactory : IItemFactory
 {
@@ -46,21 +46,21 @@ public class WoodFactory : IItemFactory
         return new WoodFloor();
     }
 }
-[/code]
+```
 
 And different types of material:
 
-[code language="csharp"]
+```csharp
 public class MetalWall : IItem { }
 public class MetalFloor : IItem { }
 
 public class WoodWall : IItem { }
 public class WoodFloor : IItem { }
-[/code]
+```
 
 Now we can use this structure. We could have a builder that is going to build a part of a house and we could determine what materials he is going to use by passing a factory to it.
 
-[code language="csharp"]
+```csharp
 public class Builder
 {
     private IItemFactory itemFactory;
@@ -80,20 +80,20 @@ public class Builder
         this.itemFactory.CreateWall();
     }
 }
-[/code]
+```
 
 We can decide what the house is going to be built of by specifying which factory the builder is going to use:
 
-[code language="csharp"]
+```csharp
 var metalBuilder = new Builder(new MetalFactory());
 var woodBuilder = new Builder(new WoodFactory());
-[/code]
+```
 
 In a real life example, we could think of Starcraft using this pattern to create a base for each race. So calling:
 
-[code language="csharp"]
+```csharp
 player.CreateBase();
-[/code]
+```
 
 Would create a Nexus, Command Center or Hatchet accordingly to the player's race.
 

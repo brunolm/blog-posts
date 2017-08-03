@@ -10,7 +10,7 @@ Abstract classes can also declare abstract methods meaning that classes inheriti
 
 An example of this pattern could be something like:
 
-[code language="csharp"]
+```csharp
 public abstract class Character
 {
     public string Name { get; set; }
@@ -42,6 +42,6 @@ public class Charmander : Character
 
     }
 }
-[/code]
+```
 
 Most characters could have the exact same behavior on the Speak method, so instead of duplicating all the logic it is implemented in a single place, the template class. It also declares an abstract method Evolve that all characters must implement this. The logic for this method will be unique for each inheriting class.

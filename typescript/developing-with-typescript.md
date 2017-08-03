@@ -17,7 +17,7 @@ TypeScript brings lots of advantages. With the typed system it is impossible to 
 
 In TypeScript you can easily define interfaces, classes, enums, namespaces... You can use types, generics...
 
-[code language="javascript"]
+```
 class Foo
 {
     Bar<T>(something: T): T
@@ -41,11 +41,11 @@ e = foo.Bar({ Name: "Bruno Michels" });
 
 alert(n);
 alert(e.Name);
-[/code]
+```
 
 Generates:
 
-[code language="javascript"]
+```
 var Foo = (function () {
     function Foo() {
     }
@@ -61,7 +61,7 @@ n = foo.Bar(10);
 e = foo.Bar({ Name: "Bruno Michels" });
 alert(n);
 alert(e.Name);
-[/code]
+```
 
 For more check the links at the end of the post.
 

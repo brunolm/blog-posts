@@ -17,13 +17,13 @@ That means we can extend methods from any type, even types where we don't have a
 We build extension methods by declaring it as a static method, but there is a little tweak makes it compile into a method that can be called from an instance.
 <!--more-->
 
-Extension methods were born in .NET 3.5 together with Linq. Linq was a major feature on the .NET Framework, it introduced several extension methods making data manipulation much easier. Some of the extension methods commonly used are <code>.Where</code>, <code>.Select</code>, <code>.Count</code>...
+Extension methods were born in .NET 3.5 together with Linq. Linq was a major feature on the .NET Framework, it introduced several extension methods making data manipulation much easier. Some of the extension methods commonly used are `.Where`, `.Select`, `.Count`...
 
 Ok, so how do we create our own extension methods? Simple! We need a couple of things. First we need to create a <strong>static</strong> class.
 
 I will make an example extending strings. I want to simplify the process to truncate a string, so I can create a method to do that.
 
-[code language="csharp"]
+```csharp
 namespace Example.Extensions
 {
     public static class StringExtender
@@ -40,23 +40,23 @@ namespace Example.Extensions
         }
     }
 }
-[/code]
+```
 
-This simple code will truncate a string. Did you notice something different? Yes, the parameter is declared as <code>this string source</code>. When we create a static class, a static method and use <code>this</code> before the first parameter we are saying that it is an extension method.
+This simple code will truncate a string. Did you notice something different? Yes, the parameter is declared as `this string source`. When we create a static class, a static method and use `this` before the first parameter we are saying that it is an extension method.
 
 Now we can try to use it!
 
-[code language="csharp"]
+```csharp
 "I will be truncated, lol!".TruncateAt(6);
-[/code]
+```
 
-Wait, are you getting a compilation error? If you are, the reason is simple. We created the extension method using the namespace <code>Example.Extensions</code>. If we try to use it in another namespace we will need to add the using statement (in Visual Studio 2015 the light-bulb is smart enough to add it for you).
+Wait, are you getting a compilation error? If you are, the reason is simple. We created the extension method using the namespace `Example.Extensions`. If we try to use it in another namespace we will need to add the using statement (in Visual Studio 2015 the light-bulb is smart enough to add it for you).
 
-No errors? Yey! Did you notice that when we are calling our method we are only passing one parameter instead of two? It is because the first one is the instance itself. The parameters passed to this method will be <code>"I will be truncated, lol!"</code> and <code>6</code>.
+No errors? Yey! Did you notice that when we are calling our method we are only passing one parameter instead of two? It is because the first one is the instance itself. The parameters passed to this method will be `"I will be truncated, lol!"` and `6`.
 
 Simple, isn't it? Wanna see some complex examples? What about DistinctBy? It is a method that filters a list leaving only distinct elements comparing by a given expression.
 
-[code language="csharp"]
+```csharp
 /// <summary>
 /// Returns distinct elements from a sequence.
 /// </summary>
@@ -82,7 +82,7 @@ public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TS
         }
     }
 }
-[/code]
+```
 
 If you are going to manipulate images, you could create a Crop method... And so on, the possibilities are limitless!
 

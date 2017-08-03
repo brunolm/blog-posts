@@ -5,34 +5,34 @@ tags: [c#, design-patterns, observer-pattern]
 
 The observer design pattern can be used when you want objects to know when something happens to an object being observed.
 
-This is achieved by having the <code>Subject</code> and an <code>Observer</code>.
+This is achieved by having the `Subject` and an `Observer`.
 <!--more-->
 
 For example, lets say we have a Dragon which will be the subject and then have people as observers. When the dragon switch to a flying mode the observers are going to look up instead of forward.
 
-To accomplish that we need a <code>ISubject</code> that will have the method to add, remove and notify observers.
+To accomplish that we need a `ISubject` that will have the method to add, remove and notify observers.
 
-[code language="csharp"]
+```csharp
 public interface IDragonSubject
 {
     void Subscribe(IDragonObserver observer);
     void Unsubscribe(IDragonObserver observer);
     void Notify();
 }
-[/code]
+```
 
 And the specification for the observers.
 
-[code language="csharp"]
+```csharp
 public interface IDragonObserver
 {
     void Update(Dragon dragon);
 }
-[/code]
+```
 
 Now we can create our subject.
 
-[code language="csharp"]
+```csharp
 public class Dragon : IDragonSubject
 {
     private IList<IDragonObserver> observers;
@@ -78,11 +78,11 @@ public class Dragon : IDragonSubject
         }
     }
 }
-[/code]
+```
 
 And our observer:
 
-[code language="csharp"]
+```csharp
 public class Person : IDragonObserver
 {
     public enum LookingDirectionTypes
@@ -104,11 +104,11 @@ public class Person : IDragonObserver
             LookingDirection = LookingDirectionTypes.Foward;
     }
 }
-[/code]
+```
 
 Finally we can put all the pieces together and see the result. In this test there are a couple of people observing the dragon, the third one is elsewhere. So when the dragon start flying person1 and person2 will look up.
 
-[code language="csharp"]
+```csharp
 [TestClass]
 public class ObserverTest
 {
@@ -135,7 +135,7 @@ public class ObserverTest
         Assert.AreEqual(Person.LookingDirectionTypes.Foward, p3.LookingDirection);
     }
 }
-[/code]
+```
 
 A real life example is on Assassins Creed, ordinary people are the observers and the assassin is the subject. When the subject toss money all observers are notified that the action happened and if they are in range they will take an action.
 

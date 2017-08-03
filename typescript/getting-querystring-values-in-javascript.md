@@ -8,7 +8,7 @@ QueryString refers to URL parameters that can be passed on. There are several ap
 One method I came up with is:
 <!--more-->
 
-[code language="javascript"]
+```
 function GetQueryString() {
     var a = window.location.search.substr(1).split('&');
     if (a == "") return {}; // if no params return empty object
@@ -26,19 +26,19 @@ function GetQueryString() {
 
 // usage
 var qs = GetQueryString();
-[/code]
+```
 
-With an URL like <code>?topic=123&amp;name=query+string</code>, the following will return:
+With an URL like `?topic=123&amp;name=query+string`, the following will return:
 
-[code language="javascript"]
+```
 qs["topic"];    // 123
 qs["name"];     // query string
 qs["nothere"];  // undefined (object)
-[/code]
+```
 
 By tearing down Google's code we can find a fragment of code that looks like this:
 
-[code language="javascript"]
+```
 function (b) {
     var c = typeof b === "undefined";
     if (a !== h && c) return a;
@@ -56,10 +56,10 @@ function (b) {
     c && (a = d);
     return d
 }
-[/code]
+```
 
-"Translating" this code it means: go through the parameters and get keys and values by navigating on it using <code>substring</code>.
+"Translating" this code it means: go through the parameters and get keys and values by navigating on it using `substring`.
 
-They start to look for parameters on the url from ? and also from the hash #. Then for each parameter they split in the equal sign <code>b[f][p]("=")</code> (which looks like <code>indexOf</code>, they use the position of the char to get the key/value). Having it split they check whether the parameter has a value or not, if it has they store the value of <code>d</code>, if not it just continue.
+They start to look for parameters on the url from ? and also from the hash #. Then for each parameter they split in the equal sign `b[f][p]("=")` (which looks like `indexOf`, they use the position of the char to get the key/value). Having it split they check whether the parameter has a value or not, if it has they store the value of `d`, if not it just continue.
 
-In the end the object <code>d</code> is returned, handling escaping and the + sign. This object is just like mine, it has the same behavior.
+In the end the object `d` is returned, handling escaping and the + sign. This object is just like mine, it has the same behavior.

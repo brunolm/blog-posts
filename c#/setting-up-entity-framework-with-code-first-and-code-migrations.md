@@ -13,9 +13,9 @@ The first step is to install the Entity Framework from the Nuget Package Manager
 
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-53-03-08-53-55-711.png"><img class="alignnone size-full wp-image-65" src="https://brunolm.files.wordpress.com/2015/03/2015-53-03-08-53-55-711.png" alt="2015-53-03 08-53-55-711" width="591" height="70" /></a>
 
-After it is installed we can start coding with it. Let's say we want to store our system Users and allow them to create new Posts. So our models in this scenario will be <code>User</code> and <code>Post</code>.
+After it is installed we can start coding with it. Let's say we want to store our system Users and allow them to create new Posts. So our models in this scenario will be `User` and `Post`.
 
-[code language="csharp"]
+```csharp
 public class User
 {
     public User()
@@ -40,11 +40,11 @@ public class Post
 
     public User Owner { get; set; }
 }
-[/code]
+```
 
-Whenever we use Entity Framework we create an instance of a <code>DbContext</code> and access the database through it. To use our models we have to tell Entity Framework that they belong on the data context. To do that we can inherit from <code>DbContext</code> and add properties of <code>DbSet&lt;T&gt;</code> to it.
+Whenever we use Entity Framework we create an instance of a `DbContext` and access the database through it. To use our models we have to tell Entity Framework that they belong on the data context. To do that we can inherit from `DbContext` and add properties of `DbSet&lt;T&gt;` to it.
 
-[code language="csharp"]
+```csharp
 public class ApplicationContext : DbContext
 {
     public ApplicationContext()
@@ -57,17 +57,17 @@ public class ApplicationContext : DbContext
 
     public DbSet<Post> Posts { get; set; }
 }
-[/code]
+```
 
 By doing it we are basically saying that our database has two tables: "Users" and "Posts".
 
-The <a href="https://msdn.microsoft.com/en-us/library/gg679467(v=vs.113).aspx" target="_blank"><code>DbContext</code> constructor</a> in this case is taking a string parameter which is specifying the database name it is going to create. It is also possible to send a ConnectionString name and it will automatically resolve from the config file.
+The <a href="https://msdn.microsoft.com/en-us/library/gg679467(v=vs.113).aspx" target="_blank">`DbContext` constructor</a> in this case is taking a string parameter which is specifying the database name it is going to create. It is also possible to send a ConnectionString name and it will automatically resolve from the config file.
 
 Finally to test our little setup we can build a quick block of code and see what happens.
 
 In the example bellow I am creating two Users and two Posts. Each post has an owner.
 
-[code language="csharp"]
+```csharp
 static void Main(string[] args)
 {
     using (var db = new ApplicationContext())
@@ -90,23 +90,23 @@ static void Main(string[] args)
         db.SaveChanges(); // commit changes
     }
 }
-[/code]
+```
 
-A <code>SELECT * FROM Users</code> returns:
+A `SELECT * FROM Users` returns:
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-31-03-09-31-38-917.png"><img class="alignnone size-full wp-image-67" src="https://brunolm.files.wordpress.com/2015/03/2015-31-03-09-31-38-917.png" alt="2015-31-03 09-31-38-917" width="89" height="75" /></a>
 
-A <code>SELECT * FROM Posts</code> returns:
+A `SELECT * FROM Posts` returns:
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-32-03-09-32-35-845.png"><img class="alignnone size-full wp-image-68" src="https://brunolm.files.wordpress.com/2015/03/2015-32-03-09-32-35-845.png" alt="2015-32-03 09-32-35-845" width="336" height="75" /></a>
 
 We can see that Entity Framework automatically created the database and tables, along with primary keys, foreign keys and everything we need for us. We didn't write a single line o SQL code.
 
-Now lets look back at the code and retrieve data instead. Lets say we want to get all posts by a user id. In our <code>Post</code> class we don't have the user id, only the <code>User</code> object... And as you could see Entity Framework generated a column called <code>Owner_ID</code> for us. We can change it by adding:
+Now lets look back at the code and retrieve data instead. Lets say we want to get all posts by a user id. In our `Post` class we don't have the user id, only the `User` object... And as you could see Entity Framework generated a column called `Owner_ID` for us. We can change it by adding:
 
-[code language="csharp"]
+```csharp
 public int OwnerID { get; set; }
-[/code]
+```
 
-To our <code>Post</code> class. By convention Entity Framework will see that the name matches with the owner property and automatically use it as the index instead of generating one.
+To our `Post` class. By convention Entity Framework will see that the name matches with the owner property and automatically use it as the index instead of generating one.
 
 If we try to run our application we will get an error saying that the model changed since it was last created. This is because we changed the database, but as it already exists Entity Framework can't re-create it.
 
@@ -114,15 +114,15 @@ We can either drop the database and let it create again or we can use <em>Code M
 
 Code Migrations are automatically generated files that know how to update the state of the database. To use them we have to open the Package Manager console under View &gt; Other Windows, then type:
 
-[code]Enable-Migrations[/code]
+```Enable-Migrations```
 
 This is going to allow migration files to be created. We can then add a migration to our latest changes by typing:
 
-[code]Add-Migration <name>[/code]
+```Add-Migration <name>```
 
 And finally update the database by typing:
 
-[code]Update-Database[/code]
+```Update-Database```
 
 Now that our database has been update we can use it again.
 
@@ -130,15 +130,15 @@ Now that our database has been update we can use it again.
 
 Notice that there is a Configuration file. It is created when you Enable-Migrations. You can change it to set:
 
-[code language="csharp"]
+```csharp
 AutomaticMigrationsEnabled = true;
-[/code]
+```
 
 This allows you to change your models without having to create migrations manually. But you will still have to update the database manually by typying Update-Database.
 
 Lets change our application to retrieve all posts from a user given and ID.
 
-[code language="csharp"]
+```csharp
 static void Main(string[] args)
 {
     using (var db = new ApplicationContext())
@@ -146,6 +146,6 @@ static void Main(string[] args)
         var posts = db.Posts.Where(o => o.OwnerID == 1).ToList();
     }
 }
-[/code]
+```
 
 <a href="https://brunolm.files.wordpress.com/2015/03/2015-49-03-09-49-48-104.png"><img class="alignnone size-full wp-image-71" src="https://brunolm.files.wordpress.com/2015/03/2015-49-03-09-49-48-104.png" alt="2015-49-03 09-49-48-104" width="453" height="164" /></a>

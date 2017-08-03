@@ -3,7 +3,7 @@ title: "Using Reflection in .NET"
 tags: [.net, c#, reflection]
 ---
 
-Reflection uses the object of type <code>Type</code> that describes assemblies, modules, types...
+Reflection uses the object of type `Type` that describes assemblies, modules, types...
 
 Through reflection it is possible to do many different things, for example:
 <ul>
@@ -20,7 +20,7 @@ These are just a few things you can do with it. In this post I'm going to show a
 
 Say you want to display an enum in a dropdown. But you want to have code/description rather than just displaying the code. You can annotate your enum with the description attribute:
 
-[code language="csharp"]
+```csharp
 public enum PurposeKind
 {
     Development,
@@ -31,11 +31,11 @@ public enum PurposeKind
     [Description("Unit Test")]
     UnitTest,
 }
-[/code]
+```
 
 And to get the description we can use reflection. I will be getting the value/description and then I will add it to a dictionary:
 
-[code language="csharp"]
+```csharp
 static void Main(string[] args)
 {
     var valuesAndDescriptions = new Dictionary<PurposeKind, string>();
@@ -71,14 +71,14 @@ static void Main(string[] args)
         }
     }
 }
-[/code]
+```
 
 Results in
 
-[code]
+```
 Development,Development
 Test,Functional Test
 UnitTest,Unit Test
-[/code]
+```
 
 <a href="https://msdn.microsoft.com/en-us/library/system.type%28v=vs.110%29.aspx" target="_blank">See System.Type on MSDN</a> for a full reference.

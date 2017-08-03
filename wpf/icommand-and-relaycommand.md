@@ -10,23 +10,23 @@ tags: [c#, icommand, relaycommand, wpf]
 <!--more-->
 <div>
 
-[code language="csharp"]
+```csharp
 event EventHandler CanExecuteChanged;
 bool CanExecute(object parameter);
 void Execute(object parameter);
-[/code]
+```
 
 <div></div>
-<div><code>CanExecuteChanged</code> is invoked when changes occur that can change whether or not the command can be executed.</div>
+<div>`CanExecuteChanged` is invoked when changes occur that can change whether or not the command can be executed.</div>
 <div></div>
-<div><code>CanExecute</code> will determine whether the command can be executed or not. If it returns false the button will be disabled on the interface.</div>
+<div>`CanExecute` will determine whether the command can be executed or not. If it returns false the button will be disabled on the interface.</div>
 <div></div>
-<div><code>Execute</code> runs the command logic.</div>
+<div>`Execute` runs the command logic.</div>
 <div></div>
-<div>With a simple implementation of <code>ICommand</code> I can create for example:</div>
+<div>With a simple implementation of `ICommand` I can create for example:</div>
 <div></div>
 
-[code language="csharp"]
+```csharp
 public class NormalCommand : ICommand
 {
     public event EventHandler CanExecuteChanged;
@@ -41,12 +41,12 @@ public class NormalCommand : ICommand
         throw new NotImplementedException();
     }
 }
-[/code]
+```
 
-<div>However this does not allow me to have a different logic to my <code>CanExecute</code> or <code>Execute</code>. For each command I would have to implement a new class. To solve that problem there is the <code>RelayCommand</code> implementation, which is a command that can be instantiated passing the actions to be executed:</div>
+<div>However this does not allow me to have a different logic to my `CanExecute` or `Execute`. For each command I would have to implement a new class. To solve that problem there is the `RelayCommand` implementation, which is a command that can be instantiated passing the actions to be executed:</div>
 <div></div>
 
-[code language="csharp"]
+```csharp
 public class RelayCommand : ICommand
 {
     private Action<object> execute;
@@ -74,17 +74,17 @@ public class RelayCommand : ICommand
         this.execute(parameter);
     }
 }
-[/code]
+```
 
 <div></div>
 <div>With this implementation I can specify what I want to execute when I create the command, so I don't have to implement a new class for each different action I want to take. Then I can call it using:</div>
 
-[code language="csharp"]
+```csharp
 var cmd1 = new RelayCommand(o => { /* do something 1 */ }, o => true);
 var cmd2 = new RelayCommand(o => { /* do something 2 */ }, o => true);
-[/code]
+```
 
-<div>The <code>CommandManager.RequerySuggested</code> handles events when something in the interface suggests that a requery should happen. If your ICommand adds the handlers to it then it will automatically update UI elements when the screen execute some actions. (e.g. lose focus on a TextBox)</div>
+<div>The `CommandManager.RequerySuggested` handles events when something in the interface suggests that a requery should happen. If your ICommand adds the handlers to it then it will automatically update UI elements when the screen execute some actions. (e.g. lose focus on a TextBox)</div>
 &nbsp;
 
 </div>

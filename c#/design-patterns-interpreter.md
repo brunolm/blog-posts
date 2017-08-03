@@ -8,16 +8,16 @@ The Interpreter design pattern was created to solve an issue interpreting data f
 To achieve this design our application needs a structure similar to the following:
 <!--more-->
 
-[code]
+```
 Context <-- Client --> Expression1
                    `-> Expression2
-[/code]
+```
 
 The client has a context that is sent to a list of expression interpreters and they set the output to the final result.
 
 For example, we can have expressions to parse decimal numbers into roman numerals.
 
-[code language="csharp"]
+```csharp
 public class RomanContext
 {
     public RomanContext(int input)
@@ -130,11 +130,11 @@ public class RomanTenExpression : Expression
         }
     }
 }
-[/code]
+```
 
 In the above example one class is responsible to interpret numbers 1 to 9 while the second handles 10 to 90. So if we combine them we can parse numbers from 1 to 99:
 
-[code language="csharp"]
+```csharp
 Expression[] expressions = new Expression[]
 {
     new RomanTenExpression(),
@@ -149,6 +149,6 @@ foreach (var expression in expressions)
 }
 
 context.Output; // "XCIX"
-[/code]
+```
 
 Other practical uses could be parsing source code, or an “engrish sentençe” (<em>did you mean “English sentence”?</em>) and so on.

@@ -10,16 +10,16 @@ But, imagine the following scenario: you have two buttons on your screen, one to
 
 The most interesting way I found to do this is using the mediator design pattern to implement an <a href="https://brunolm.wordpress.com/2015/03/01/messaging-eventaggregator/" title="Messaging – EventAggregator" target="_blank">EventAggregator</a> system.
 
-To demonstrate it I will use MEF to keep a single instance of my <code>EventAggregator</code> across the system. For that I will annotate my class with the <code>ExportAttribute</code> (<code>using System.ComponentModel.Composition;</code>).
+To demonstrate it I will use MEF to keep a single instance of my `EventAggregator` across the system. For that I will annotate my class with the `ExportAttribute` (`using System.ComponentModel.Composition;`).
 
-[code language="csharp"]
+```csharp
 [Export]
 public class EventAggregator
-[/code]
+```
 
 And I will define a simple <a href="https://brunolm.wordpress.com/2015/03/04/using-mef-to-setup-dependency-injection/" title="Using MEF to setup Dependency Injection" target="_blank">Mef class</a> to handle it:
 
-[code language="csharp"]
+```csharp
 public class Mef
 {
     static Mef()
@@ -30,11 +30,11 @@ public class Mef
 
     public static CompositionContainer Container { get; private set; }
 }
-[/code]
+```
 
 On my View I can get a instance of it. I will also implement IListen interface to be able to handle messages sent by others:
 
-[code language="csharp"]
+```csharp
 public partial class DialogView
     : Window, IListen<CloseWindowMessage>
 {
@@ -54,22 +54,22 @@ public partial class DialogView
         this.Close();
     }
 }
-[/code]
+```
 
 The CloseWindowMessage class:
 
-[code language="csharp"]
+```csharp
 public class CloseWindowMessage
 {
     public bool? Result { get; set; }
 
     public object Sender { get; set; }
 }
-[/code]
+```
 
 I can then finally publish a message from my ViewModel notifying the view that it should close.
 
-[code language="csharp"]
+```csharp
 [PropertyChanged.ImplementPropertyChanged]
 public class DialogViewModel
 {
@@ -94,6 +94,6 @@ public class DialogViewModel
 
     public ICommand CloseCommand { get; set; }
 }
-[/code]
+```
 
 When the view receives the message it will call Handle which will close the window using the View's logic for it. This way you have a view model decoupled from the view.

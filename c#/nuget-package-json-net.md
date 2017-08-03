@@ -10,7 +10,7 @@ The <a href="http://www.newtonsoft.com/json/help/html/Samples.htm" target="_blan
 
 It can be used to easily Clone objects by serializing and deserializing:
 
-[code language="csharp"]
+```csharp
 public static T Clone<T>(this T source)
 {
     if (Object.ReferenceEquals(source, null))
@@ -22,13 +22,13 @@ public static T Clone<T>(this T source)
         JsonConvert.SerializeObject(source)
     );
 }
-[/code]
+```
 
 Json.NET can handle <a href="http://www.newtonsoft.com/json/help/html/SerializationGuide.htm" target="_blank">"a wide variety of .NET objects"</a>, it serializes the information required to revert it back later.
 
-It is possible to map a property to a name but adding the attribute <code>JsonPropertyAttribute</code>:
+It is possible to map a property to a name but adding the attribute `JsonPropertyAttribute`:
 
-[code language="csharp"]
+```csharp
 public class Game
 {
     public int ID { get; set; }
@@ -38,16 +38,16 @@ public class Game
     [JsonProperty(propertyName: "price_value")]
     public decimal Price { get; set; }
 }
-[/code]
+```
 
 When serialized generates:
-[code]
+```
 {"ID":1,"Name":"Breath of Fire IV","price_value":1337.00}
-[/code]
+```
 
 Json can be parsed in a dynamic object:
 
-[code language="csharp"]
+```csharp
 public static void DynamicJsonExample()
 {
     var editGameViewModel = new EditGameViewModel
@@ -64,6 +64,6 @@ public static void DynamicJsonExample()
     decimal price = jsonObj.Price; // 1337
     string expt = jsonObj.NotSerializedThingIsNull; // null
 }
-[/code]
+```
 
 <a href="http://stackoverflow.com/questions/tagged/json.net?sort=votes&amp;pageSize=50" target="_blank">Json.NET on Stack Overflow</a>

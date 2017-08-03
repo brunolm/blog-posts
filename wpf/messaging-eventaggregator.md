@@ -10,7 +10,7 @@ tags: [c#, messaging, mvvm, wpf]
 <div>The EventAggregator class is going to store all instances that are being tracked. So when a message is published all those listed instances are going to be notified.</div>
 <!--more-->
 
-[code language="csharp"]
+```csharp
 public interface IListen { }
 public interface IListen<T> : IListen
 {
@@ -39,13 +39,13 @@ public class EventAggregator
         }
     }
 }
-[/code]
+```
 
 <div></div>
 <div>To demonstrate this example lets use a class Car which is going to be listening for signals. A class Guard which will notify the cars througth a SignalMessage class.</div>
 <div></div>
 
-[code language="csharp"]
+```csharp
 public class Car : IListen<SignalMessage>
 {
     public Car(EventAggregator eventAggregator)
@@ -78,13 +78,13 @@ public class SignalMessage
 {
     public string Message { get; set; }
 }
-[/code]
+```
 
 <div></div>
 <div>If we then run this application</div>
 <div></div>
 
-[code language="csharp"]
+```csharp
 static void Main(string[] args)
 {
     var eventAggregator = new EventAggregator();
@@ -99,7 +99,7 @@ static void Main(string[] args)
 
     Console.ReadKey(true);
 }
-[/code]
+```
 
 <div></div>
 <div>We will notice that all the cards are being notified</div>

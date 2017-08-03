@@ -12,7 +12,7 @@ One example of a Composite pattern structure would be:
 
 The following code prints elements on the screen in a hierarchical format without having to worry about the type of the object (ex: you could print directory and file names without worrying if the object is a directory or a file).
 
-[code language="csharp"]
+```csharp
 public interface Component
 {
     void DoStuff(int indent);
@@ -48,11 +48,11 @@ public class Composite : Component
         }
     }
 }
-[/code]
+```
 
 Results in:
 
-[code]
+```
 <Group>
   First
   Second
@@ -60,6 +60,6 @@ Results in:
     Third
     <Group>
       Fourth
-[/code]
+```
 
 In games it could be used to generate a skill tree or used to calculate some sort of composite attack. I found one example of it being <a href="http://gamedevelopment.tutsplus.com/tutorials/using-the-composite-design-pattern-for-an-rpg-attributes-system--gamedev-243" target="_blank">used in the attributes system of a RPG game</a>.

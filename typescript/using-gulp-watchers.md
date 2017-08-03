@@ -9,7 +9,7 @@ gulp also comes with watchers, you can check files for changes and if a file cha
 
 
 
-[code language="javascript"]
+```
 import gulp = require("gulp");
 import concat = require("gulp-concat");
 gulp.task("watch", () =>
@@ -26,7 +26,7 @@ gulp.task("watch", () =>
         // then run tasks specified above (if any)
     });
 });
-[/code]
+```
 
 You can watch an example in here:
 https://www.youtube.com/watch?v=ahedc6jikAA

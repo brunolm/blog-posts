@@ -23,7 +23,7 @@ There are some particularly interesting modules such as:
 
 Rather than doing this:
 
-[code language="csharp"]
+```csharp
 public class Foo : INotifyPropertyChanged
 {
     private string name;
@@ -50,17 +50,17 @@ public class Foo : INotifyPropertyChanged
         }
     }
 }
-[/code]
+```
 
 You can simply build it with this:
 
-[code language="csharp"]
+```csharp
 [PropertyChanged.ImplementPropertyChanged]
 public class Foo
 {
     public string Name { get; set; }
 }
-[/code]
+```
 
 There is also:
 <a href="https://github.com/Fody/Anotar" target="_blank">Anotar</a> which makes loggin easier.

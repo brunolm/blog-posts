@@ -8,7 +8,7 @@ The factory design pattern consists in a class responsible for creating instance
 For example, if we have an application that needs different logic depending on a configuration we can isolate the place where the decision is made:
 <!--more-->
 
-[code language="csharp"]
+```csharp
 using System;
 using System.Collections.Generic;
 
@@ -90,6 +90,6 @@ namespace ConsoleApplication1
     }
 
 }
-[/code]
+```
 
 Without the Factory you would have to take decisions directly on your code, or decide which instance to create without a central place to take care of that for you.

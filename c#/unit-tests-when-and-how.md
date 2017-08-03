@@ -20,27 +20,27 @@ And finally the methods are named as:
 
 So if I have for example:
 
-[code]
+```
 CodingWise.Core
 |- Roman.cs
    |- ConvertFrom  // method
    |- ConvertTo    // method
-[/code]
+```
 
 I will have a test assembly with the following files:
 
-[code]
+```
 CodingWise.Core.Tests
 |- RomanTests.cs
    |- ConvertFrom_Decimal1_ReturnsI  // method
    |- ConvertFrom_Decimal9_ReturnsIX // method
    |- ConvertTo_RomanIV_Returns4     // method
    ...
-[/code]
+```
 
-Unit tests classes and methods must be decorated with attributes. For classes you have to specify that it is a test class with [code]TestClass[/code] attribute. On methods you need to use the [code]TestMethod[/code] attribute.
+Unit tests classes and methods must be decorated with attributes. For classes you have to specify that it is a test class with ```TestClass``` attribute. On methods you need to use the ```TestMethod``` attribute.
 
-[code language="csharp"]
+```csharp
 [TestClass]
 public class RomanConverterTests
 {
@@ -50,22 +50,22 @@ public class RomanConverterTests
         Assert.AreEqual("I", Roman.ConvertFrom(1));
     }
 }
-[/code]
+```
 
 Assert provides several methods to compare actual results to expected results and if it fails it is going to throw an notification on the Test Explorer window. Asserts shouldn't be overused on a single method. <a href="http://programmers.stackexchange.com/a/7829/1451" target="_blank">It is ok to use more than one Assert</a> but you have to be careful not to test multiple things in the same method.
 
 There are four other attributes for methods that are not mandatory but they can be pretty useful:
 
-[code]
+```
 ClassInitialize   Runs once before all tests.
 ClassCleanUp      Runs once after all tests.
 TestInitialize    Runs before you run each test.
 TestCleanUp       Runs after you run each test.
-[/code]
+```
 
 It is most useful when you want to do a database test. You can create a transaction and then rollback. This way you test the logic and don't pollute/corrupt the database.
 
-[code language="csharp"]
+```csharp
 [TestClass]
 public class UserServiceTests
 {
@@ -98,13 +98,13 @@ public class UserServiceTests
         userService.Save(user);
     }
 }
-[/code]
+```
 
-There is also the "Mocks". The purpose of mocks is providing external information to your test so you can complete a unit of work. In the following example I'm mocking an [code]IItem[/code] because it doesn't really matter to the unit of work being tested. The service wasn't mocked because that is under test and what I'm checking here is if the service has the correct logic that is only allowing buyable items to be added to the cart.
+There is also the "Mocks". The purpose of mocks is providing external information to your test so you can complete a unit of work. In the following example I'm mocking an ```IItem``` because it doesn't really matter to the unit of work being tested. The service wasn't mocked because that is under test and what I'm checking here is if the service has the correct logic that is only allowing buyable items to be added to the cart.
 
 The <a href="https://www.nuget.org/packages/Moq/" target="_blank">example bellow uses Moq</a>.
 
-[code language="csharp"]
+```csharp
 public class CartService
 {
     public ApplicationContext Context { get; set; }
@@ -158,7 +158,7 @@ public class CartServiceTests
         Assert.AreEqual(1, cartService.Items.Count);
     }
 }
-[/code]
+```
 
 Mocks are sometimes overused, <strong>be careful not to fall on "Unit Test Only Tests the Mock" situation</strong>. Mocks exists so eliminate external dependencies and allow your code to focus on a single unit of work.
 

@@ -9,7 +9,7 @@ I choose to use Webpack because it has some dev tools, auto-reload. And it is ni
 
 <a href="https://github.com/brunolm/typescript-babel-webpack">brunolm/typescript-babel-webpack</a> is a project with just the essential, nothing else. Simple and clean.
 
-You can see that in this project there is a <code class="highlighter-rouge">README.md</code> where I tried to write all the steps I went through to create that setup and the issues I faced.
+You can see that in this project there is a `README.md` where I tried to write all the steps I went through to create that setup and the issues I faced.
 
 <!--more-->
 
@@ -78,7 +78,7 @@ These presets come from the installs above. With ES2015 and Stage-0 I am basical
 
 Now on Webpack I created a file `webpack.config.js`
 
-[code language="js"]
+```js
 module.exports = {
   entry: ['babel-polyfill', './src/'],
   output: {
@@ -94,7 +94,7 @@ module.exports = {
     }],
   }
 };
-[/code]
+```
 
 <ul>
  	<li>entry
@@ -168,7 +168,7 @@ module.exports = {
 </ul>
 I had only one issue during this setup, I was getting an error
 
-[code]error TS2304: Cannot find name 'regeneratorRuntime'.[/code]
+```error TS2304: Cannot find name 'regeneratorRuntime'.```
 
 . It was because I had my loaders in wrong order. The correct order is RIGHT to LEFT, so TypeScript should go last to run first. <a href="http://stackoverflow.com/a/38321269/340760" target="_blank">http://stackoverflow.com/a/38321269/340760 </a>
 

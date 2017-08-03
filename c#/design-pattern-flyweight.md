@@ -8,7 +8,7 @@ The Flyweight Design Pattern allows you to share instances of the same object ac
 In the example on this post I'm reusing a rectangle with the same color, that makes the color property "intrinsic". But I'm not sharing position and size across the instances, so those characteristics are "extrinsic".
 <!--more-->
 
-[code language="csharp"]
+```csharp
 namespace ConsoleApplication1
 {
     class Program
@@ -66,7 +66,7 @@ namespace ConsoleApplication1
         }
     }
 }
-[/code]
+```
 
 Output:
 <a href="https://brunolm.files.wordpress.com/2015/05/flyweight.png"><img src="https://brunolm.files.wordpress.com/2015/05/flyweight.png" alt="Flyweight" width="700" height="196" class="alignnone size-full wp-image-370" /></a>

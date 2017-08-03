@@ -7,7 +7,7 @@ tags: [c#, treeview, wpf]
 
 One simple example is as follows:
 
-[code language="xml"]
+```xml
 <TreeView>
   <TreeViewItem Header="Character 1">
     <TreeViewItem Header="Character 1's child">
@@ -21,23 +21,23 @@ One simple example is as follows:
     <TreeViewItem Header="98765"/>
   </TreeViewItem>
 </TreeView>
-[/code]
+```
 <!--more-->
 
-To bind in a TreeView you can have a <code>ObservableCollection</code> with your items and in the object you are binding you can have another <code>ObservableCollection</code> which will be a collection with all the child nodes. For example:
+To bind in a TreeView you can have a `ObservableCollection` with your items and in the object you are binding you can have another `ObservableCollection` which will be a collection with all the child nodes. For example:
 
-[code language="csharp"]
+```csharp
 public class Tag
 {
     public string Name { get; set; }
 
     public ObservableCollection<Tag> Children { get; set; }
 }
-[/code]
+```
 
 Having this structure you can bind the hierarchical data in a TreeView:
 
-[code language="xml"]
+```xml
 <TreeView ItemsSource="{Binding Tags}">
     <TreeView.ItemTemplate>
         <HierarchicalDataTemplate ItemsSource="{Binding Children}">
@@ -45,11 +45,11 @@ Having this structure you can bind the hierarchical data in a TreeView:
         </HierarchicalDataTemplate>
     </TreeView.ItemTemplate>
 </TreeView>
-[/code]
+```
 
 You can also have different types:
 
-[code language="csharp"]
+```csharp
 public class Game
 {
     public string Name { get; set; }
@@ -61,13 +61,13 @@ public class Character
 {
     public string Name { get; set; }
 }
-[/code]
+```
 
-One issue that comes along with the hierarchical binding is that the context inside does not have access to the context of your window. It means that if you have an <code>ICommand</code> in your view model you cannot access it directly.
+One issue that comes along with the hierarchical binding is that the context inside does not have access to the context of your window. It means that if you have an `ICommand` in your view model you cannot access it directly.
 
-Imagine that you have an <code>ICommand</code> called <code>ShowInfoCommand</code>. You can set the ContextMenu DataContext through a reference, like this:
+Imagine that you have an `ICommand` called `ShowInfoCommand`. You can set the ContextMenu DataContext through a reference, like this:
 
-[code language="xml"]
+```xml
 <TreeView ItemsSource="{Binding Games}" x:Name="tree">
     <TreeView.ItemTemplate>
         <HierarchicalDataTemplate ItemsSource="{Binding Characters}">
@@ -83,26 +83,26 @@ Imagine that you have an <code>ICommand</code> called <code>ShowInfoCommand</cod
         </HierarchicalDataTemplate>
     </TreeView.ItemTemplate>
 </TreeView>
-[/code]
+```
 
 However this way you lose access to the actual context (you would not be able to get the element being bound).
 
 To workaround this issue there is way to climb back to your main context and retrieve the command. To do that you have to set the Tag property, of the object that is going to contain the ContextMenu, to the window.
 
-[code language="csharp"]
+```csharp
 // relative
 Tag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
 // or by name
 Tag="{Binding ElementName=wndName}"
-[/code]
+```
 
 Having that we can bind in the context menu items. In the menu items we can refer to the context menu by using
 
-[code]
+```
 RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}
-[/code]
+```
 
-From the context menu we can refer to the element where it is set by using <code>PlacementTarget</code>.
+From the context menu we can refer to the element where it is set by using `PlacementTarget`.
 
 From the element that contains the context menu we can access the window which was bound to the Tag property.
 
@@ -110,7 +110,7 @@ And finally from the window access our command.
 
 Putting it all together:
 
-[code language="xml"]
+```xml
 <TreeView ItemsSource="{Binding Games}">
     <TreeView.ItemTemplate>
         <HierarchicalDataTemplate ItemsSource="{Binding Characters}">
@@ -127,4 +127,4 @@ Putting it all together:
         </HierarchicalDataTemplate>
     </TreeView.ItemTemplate>
 </TreeView>
-[/code]
+```

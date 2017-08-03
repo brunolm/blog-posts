@@ -15,7 +15,7 @@ I bet you have loads of null checks in your code before attempting to call metho
 
 For example, if you have a structure like this:
 
-[code language="csharp"]
+```csharp
 public class Sample
 {
     public Foo FooProperty { get; set; }
@@ -33,11 +33,11 @@ public class Bar
         Console.WriteLine("Doing something");
     }
 }
-[/code]
+```
 
-And you wanted to call <code>Bar.DoSomething</code> you would have to check if the instances are not null until you get there:
+And you wanted to call `Bar.DoSomething` you would have to check if the instances are not null until you get there:
 
-[code language="csharp"]
+```csharp
 static void Main(string[] args)
 {
     Sample nullSample = null;
@@ -49,23 +49,23 @@ static void Main(string[] args)
         nullSample.FooProperty.BarProperty.DoSomething();
     }
 }
-[/code]
+```
 
 With this new null conditional operator you can simplify to this:
 
-[code language="csharp"]
+```csharp
 static void Main(string[] args)
 {
     Sample nullSample = null;
 
     nullSample?.FooProperty?.BarProperty?.DoSomething();
 }
-[/code]
+```
 
 <h3>Auto-Property Initializers</h3>
 Sometimes you need to instantiate a class and set some default values to some of the properties, when you need that you often do it in the constructor.
 
-[code language="csharp"]
+```csharp
 public class Sample
 {
     public Sample()
@@ -74,31 +74,31 @@ public class Sample
     }
     public string Name { get; set; }
 }
-[/code]
+```
 
 With the Auto-Property Initializer your can do the same without having to set it on the constructor.
 
-[code language="csharp"]
+```csharp
 public class Sample
 {
     public string Name { get; set; } = "Default initial value";
 }
-[/code]
+```
 
 <h3>Primary Constructors (not in this release)</h3>
 <a href="https://roslyn.codeplex.com/discussions/568820" target="_blank">Not planned for the first release</a>, but they didn't discard the idea. Primary constructors allows you to basically have a class with parameters.
 
-[code language="csharp"]
+```csharp
 public class Sample(string name)
 {
     public string Name { get; set; } = name;
 }
-[/code]
+```
 
 <h3>Nameof Expressions</h3>
-The <code>nameof</code> expression lets you grab the name of the variable you are working with. It can be used in the <code>NotifyPropertyChanged</code> method, for example:
+The `nameof` expression lets you grab the name of the variable you are working with. It can be used in the `NotifyPropertyChanged` method, for example:
 
-[code language="csharp"]
+```csharp
 public class Sample : INotifyPropertyChanged
 {
     private string name;
@@ -122,11 +122,11 @@ public class Sample : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 }
-[/code]
+```
 
 It could also be used on an exception:
 
-[code language="csharp"]
+```csharp
 public void DoSomething(object someParam)
 {
     if (someParam == null)
@@ -135,40 +135,40 @@ public void DoSomething(object someParam)
     }
     //...
 }
-[/code]
+```
 
 So rather than hard-coding magic strings you can use this expression.
 <h3>String interpolation</h3>
 You often have to write:
 
-[code language="csharp"]
+```csharp
 String.Format("hello {0}", sample.Name);
-[/code]
+```
 
 And the code might require new parameters so you have to put more numbers and always keep them in the correct order. It can grow and become very confusing. To solve this problem they are introducing the string interpolation which allows us to add parameter values directly in the string.
 
-To do that you have to prefix your string with the <code>$</code> symbol.
+To do that you have to prefix your string with the `$` symbol.
 
-[code language="csharp"]
+```csharp
 String.Format($"hello {sample.Name}");
-[/code]
+```
 
 <h3>Expression-bodied Members</h3>
 You can define method bodies using lambdas.
 
-[code language="csharp"]
+```csharp
 public class Sample
 {
     public string Name { get; } = "Foo";
 
     public override string ToString() => Name;
 }
-[/code]
+```
 
 <h3>Exception filters</h3>
 You can choose when to catch an exception, for example:
 
-[code language="csharp"]
+```csharp
 public void DoSomething()
 {
     bool exceptionCatchingEnabled = true;
@@ -180,7 +180,7 @@ public void DoSomething()
     {
     }
 }
-[/code]
+```
 
 <h2>Visual Studio 2015</h2>
 
@@ -204,16 +204,16 @@ There are more options to fix the code and you can preview the changes inline.
 
 Converts this:
 
-[code language="csharp"]
+```csharp
 int val = 1 + 2;
 Sample.DoSomething(val);
-[/code]
+```
 
 To this:
 
-[code language="csharp"]
+```csharp
 Sample.DoSomething(1 + 2);
-[/code]
+```
 
 <h4>Inline rename</h4>
 

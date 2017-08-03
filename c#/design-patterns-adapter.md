@@ -10,7 +10,7 @@ It could also be used to enable the use of legacy classes into your new architec
 
 Imagine the following situation: you have a game where all your characters inherit from the abstract class Character.
 
-[code language="csharp"]
+```csharp
 public abstract class Character
 {
     public int Health { get; set; }
@@ -35,11 +35,11 @@ public class Zelda : Character
         return "Zelda Attack";
     }
 }
-[/code]
+```
 
 You then need to include a character from another game into your game, but you can't change the original class. So you can create an adapter for it:
 
-[code language="csharp"]
+```csharp
 public class Mario
 {
     public string JumpAttack()
@@ -57,11 +57,11 @@ public class MarioAdapter : Character
         return mario.JumpAttack();
     }
 }
-[/code]
+```
 
 This way you can use the new character as if it were just another normal character in your game.
 
-[code language="csharp"]
+```csharp
 Character link = new Link();
 Character zelda = new Zelda();
 Character mario = new MarioAdapter();
@@ -69,14 +69,14 @@ Character mario = new MarioAdapter();
 Console.WriteLine(link.Attack());
 Console.WriteLine(zelda.Attack());
 Console.WriteLine(mario.Attack());
-[/code]
+```
 
 Outputs:
 
-[code]
+```
 Link Attack
 Zelda Attack
 Mario Attack
-[/code]
+```
 
 This way it is possible to adapt different classes to use the same interface or abstract class, so your application doesn't need specific handling for different types.

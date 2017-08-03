@@ -10,7 +10,7 @@ This pattern consist in a class that is going to hold the elements and another c
 
 An example from scratch could be a collection of stories that are iterated through a StoryIterator and not by the collection itself:
 
-[code language="csharp"]
+```csharp
 public class StoryCollection
 {
     private ArrayList items = new ArrayList();
@@ -78,11 +78,11 @@ public class StoryEnumerator
         currentIndex = -1;
     }
 }
-[/code]
+```
 
 And to use it we could test several scenarios:
 
-[code language="csharp"]
+```csharp
 [TestClass]
 public class IteratorTest
 {
@@ -188,6 +188,6 @@ public class IteratorTest
         Assert.AreEqual(2, i);
     }
 }
-[/code]
+```
 
-The only thing the collection does it worry about storing items. This example shows how it would look like from scratch, <strong>but in .NET we already have the <code>IEnumerable</code> and <code>IEnumerator</code> interfaces for that purpose</strong>. All commonly used collection already implement those interfaces. If a class implements these interfaces then the collection will be available on a foreach loop.
+The only thing the collection does it worry about storing items. This example shows how it would look like from scratch, <strong>but in .NET we already have the `IEnumerable` and `IEnumerator` interfaces for that purpose</strong>. All commonly used collection already implement those interfaces. If a class implements these interfaces then the collection will be available on a foreach loop.

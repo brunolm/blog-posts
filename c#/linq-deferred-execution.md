@@ -7,27 +7,27 @@ Linq queries are build as you call linq methods but they are not executed until 
 
 For example:
 
-[code language="csharp"]
+```csharp
 var result = new int[] { 1, 2, 3, 4, 5 }.Where(n => n > 2);
-[/code]
+```
 
-<code>result</code> does not yet contain the resulting values. But if you iterate through it:
+`result` does not yet contain the resulting values. But if you iterate through it:
 
-[code language="csharp"]
+```csharp
 foreach (var item in result)
 {
 }
-[/code]
+```
 
 It will run the query and return the resulting values.
 
-There are other ways to run it, you could call <code>ToList()</code>, <code>ToDictionary()</code>, <code>Count()</code>...
+There are other ways to run it, you could call `ToList()`, `ToDictionary()`, `Count()`...
 
 This feature allows you to only query when really needed so it won't consume any unnecessary resources.
 
 You just have to be careful when dealing with database. If you defer the execution of a query but then dispose of the DbContext you are going to get an exception. Because the framework can't run your query on a disposed connection. For example:
 
-[code language="csharp"]
+```csharp
 IEnumerable<Person> people;
 
 using (var db = new ApplicationDbContext())
@@ -39,11 +39,11 @@ using (var db = new ApplicationDbContext())
 foreach (var item in people)
 {
 }
-[/code]
+```
 
 Instead what you have to do is:
 
-[code language="csharp"]
+```csharp
 IEnumerable<Person> people;
 
 using (var db = new ApplicationDbContext())
@@ -55,4 +55,4 @@ using (var db = new ApplicationDbContext())
 foreach (var item in people)
 {
 }
-[/code]
+```

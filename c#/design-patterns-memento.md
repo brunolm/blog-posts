@@ -8,7 +8,7 @@ The memento pattern is about recording state. In a racing game there are sometim
 
 A memento has a simple implementation, it has a class to store the properties that will be recorded and a recorder that will store the values.
 
-[code language="csharp"]
+```csharp
 public class Car
 {
     public int X { get; set; }
@@ -43,11 +43,11 @@ public class CarMemento
     public int X { get; set; }
     public int Y { get; set; }
 }
-[/code]
+```
 
 And we need a recorder to store a list of mementos.
 
-[code language="csharp"]
+```csharp
 public class CarRecorder
 {
     private int currentIndex = -1;
@@ -111,11 +111,11 @@ public class CarRecorder
         }
     }
 }
-[/code]
+```
 
 Using it:
 
-[code language="csharp"]
+```csharp
 var car = new Car();
 var recorder = new CarRecorder(car);
 
@@ -133,27 +133,27 @@ car.X = 30;
 car.Y = 30;
 
 recorder.Record();
-[/code]
+```
 
-At this point we have 3 states saved on the recorder. We can iterate through the states by calling Forward and Rewind. Currently our car is at position [code]30,30[/code], but if we call the recorder method Rewind:
+At this point we have 3 states saved on the recorder. We can iterate through the states by calling Forward and Rewind. Currently our car is at position ```30,30```, but if we call the recorder method Rewind:
 
-[code language="csharp"]
+```csharp
 recorder.Rewind();
-[/code]
+```
 
 Our car instance will now have X and Y set to 20.
 
-[code language="csharp"]
+```csharp
 car.X // 20
 car.Y // 20
-[/code]
+```
 
 We can call forward and have the values set back to 30, 30.
 
-[code language="csharp"]
+```csharp
 recorder.Forward();
 car.X // 30
 car.Y // 30
-[/code]
+```
 
 In a racing game the position of the car could be recorded every time and afterwards it can be replayed from the list of mementos allowing you to race against your own ghost.

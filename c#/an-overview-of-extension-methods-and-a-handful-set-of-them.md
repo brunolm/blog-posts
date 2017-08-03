@@ -10,9 +10,9 @@ Linq methods were implemented as Extension Methods.
 This is really useful when you need to apply some common complex action on top of some object. I personally think you should replace any Util class you might have to extension methods, it looks more semantically correct.
 <!--more-->
 
-To create an extension method you have to declare a static class and static methods. And then by using the keyword <code>this</code> on the parameter you are saying that object calling the method is going to be passed as the first parameter. In the example bellow I am extending a string adding a method to shuffle it.
+To create an extension method you have to declare a static class and static methods. And then by using the keyword `this` on the parameter you are saying that object calling the method is going to be passed as the first parameter. In the example bellow I am extending a string adding a method to shuffle it.
 
-[code language="csharp"]
+```csharp
 public static class StringExtender
 {
     public static string Shuffle(this String source)
@@ -22,22 +22,22 @@ public static class StringExtender
         return String.Join("", source.OrderBy(o => rnd.Next()));
     }
 }
-[/code]
+```
 
 I can then use it in my code.
 
-[code language="csharp"]
+```csharp
 string helloWorld = "Hello World";
 string shuffled = helloWorld.Shuffle();
-[/code]
+```
 
-Note: If you extension methods class is in a different namespace you might have to manually include it in the file you want to use it. Same happens with Linq, if it is not in your usings and you try to use <code>Where()</code> it is not going to recognize that you need to include <code>using System.Linq;</code>.
+Note: If you extension methods class is in a different namespace you might have to manually include it in the file you want to use it. Same happens with Linq, if it is not in your usings and you try to use `Where()` it is not going to recognize that you need to include `using System.Linq;`.
 
 Some useful extension methods are:
 
 <h2>IEnumerable</h2>
 
-[code language="csharp"]
+```csharp
 public static class IEnumerableExtender
 {
     /// <summary>
@@ -97,14 +97,14 @@ public static class IEnumerableExtender
         }
     }
 }
-[/code]
+```
 
 
 <h2>Object</h2>
 
 Clone requires <a href="https://brunolm.wordpress.com/2015/03/06/nuget-package-json-net/" title="Nuget Package: Json.NET" target="_blank">Json.NET</a>.
 
-[code language="csharp"]
+```csharp
 public static class ObjectExtender
 {
     /// <summary>
@@ -185,11 +185,11 @@ public static class ObjectExtender
         return property.GetCustomAttributes(attributeType, inherit).Any<object>();
     }
 }
-[/code]
+```
 
 <h2>String</h2>
 
-[code language="csharp"]
+```csharp
 public static class StringExtender
 {
     private static Regex ExtraSpace = new Regex(@"\s{2,}", RegexOptions.Compiled);
@@ -242,11 +242,11 @@ public static class StringExtender
         return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
     }
 }
-[/code]
+```
 
 <h2>Numeric</h2>
 
-[code language="csharp"]
+```csharp
 public static class NumericExtender
 {
     private static IList<string> Units = new List<string> { "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
@@ -278,6 +278,6 @@ public static class NumericExtender
         return ((double) bytes).ToFileSize(precision);
     }
 }
-[/code]
+```
 
 The possibilities are limitless, there is a <a href="http://extensionmethod.net/" target="_blank">website called extensionmethod.net</a> where you can find or submit extension methods.
