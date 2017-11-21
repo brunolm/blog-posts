@@ -11,4 +11,6 @@ If you want to setup [tests check this Pull Request](https://github.com/brunolm/
 
 Better than just reading some instructions you get a full example and a working project as a guide.
 
+[![guide](https://i.imgur.com/653Yknz.png)](https://github.com/brunolm/react-how-to)
+
 Enjoy!
